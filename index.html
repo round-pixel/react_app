@@ -10,5 +10,65 @@
 <script src="https://fb.me/react-15.1.0.js"></script>
 <script src="https://fb.me/react-dom-15.1.0.js"></script>
   <div id="app"></div>
+  <script>
+    DOM = React.DOM;
+
+    const posts = [
+      {
+        image: {
+          src: 'https://reactjs.org/logo-og.png',
+          alt: 'Some text'
+        },
+        message: "Fisrt message"
+      },
+      {
+        image: {
+          src: 'https://reactjs.org/logo-og.png'
+        },
+        message: "Second message"
+      }
+    ];
+
+    const TextBox = ({ message }) => DOM.span(null, message);
+
+    const Image = ({ src: src, width: width='70px', height: height="40px", alt: alt="No image" }) => (
+      DOM.img(
+        {
+          src: src,
+          width: width,
+          height: height,
+          alt: alt
+        }
+      )
+    );
+
+    const BlogItem = ({ image, message }) => (
+      DOM.div(
+        {
+          className: 'blog-item'
+        },
+        React.createElement(Image, image),
+        React.createElement(TextBox, { message })
+      )
+    );
+
+    const BlogList = ({ posts }) => (
+      DOM.div(
+        {
+          className: 'blog-list'
+        },
+        posts.map(
+          (post, key) => (
+            React.createElement(BlogItem, { key: key, image: post.image, message: post.message })
+          )
+        )
+      )
+    );
+
+    ReactDOM.render(
+      React.createElement(BlogList, { posts }),
+      document.getElementById('app')
+    );
+  </script>
 </body>
 </html>
