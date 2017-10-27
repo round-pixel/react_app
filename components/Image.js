@@ -1,4 +1,4 @@
-const Image = ({ src: src, width: width='70px', height: height="40px", alt: alt="No image" }) => (
+const Image = ({ src, width="70px", height="40px", alt="No image" }) => (
   DOM.img(
     {
       src: src,
