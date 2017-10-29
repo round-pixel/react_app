@@ -26,7 +26,8 @@
           createdAt: new Date(2017, 0, 1, 2, 3, 4),
           createdBy: "Mary",
           updatedAt: new Date(2017, 0, 4, 3, 2, 1)
-        }
+        },
+        likes: 2
       },
       {
         image: {
@@ -63,13 +64,14 @@
       )
     );
 
-    const BlogItem = ({ image, message, metaInfo }) => (
+    const BlogItem = ({ image, message, metaInfo, likes=0 }) => (
       DOM.div(
         {
           className: "blog-item"
         },
         React.createElement(Image, image),
         React.createElement(TextBox, { message }),
+        React.createElement(Like, { likes }),
         React.createElement(MetaInfoBlock, metaInfo)
       )
     );
@@ -87,7 +89,8 @@
                 key: key,
                 image: post.image,
                 message: post.message,
-                metaInfo: post.metaInfo
+                metaInfo: post.metaInfo,
+                likes: post.likes
               }
             )
           )
@@ -125,6 +128,40 @@
         React.createElement( MetaInfoItem, { item: updatedAt })
       )
     );
+
+    class Like extends React.Component {
+      constructor(props) {
+        super(props);
+
+        this.state = { count: props.likes }
+      }
+
+      handleClick() {
+        this.setState({ count: this.state.count + 1 })
+      };
+
+      render() {
+        return (
+          DOM.div(
+            null,
+            DOM.p(null, `Likes: ${ this.state.count }`),
+            DOM.button(
+              {
+                style: {
+                  background: '#51ABC5',
+                  border: 'none',
+                  borderRadius: '5px',
+                  color: 'white',
+                  padding: '10px 20px',
+                },
+                onClick: this.handleClick.bind(this)
+              },
+              "Like"
+            )
+          )
+        )
+      }
+    };
 
     ReactDOM.render(
       React.createElement(BlogList, { posts }),
