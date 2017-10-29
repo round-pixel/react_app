@@ -12,8 +12,9 @@
 <script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment-with-locales.min.js"></script>
   <div id="app"></div>
   <script>
-    moment.lang('ru');
+    moment.locale('ru');
     DOM = React.DOM;
+    PropTypes = React.PropTypes;
 
     const posts = [
       {
@@ -53,7 +54,15 @@
       )
     );
 
-    const Image = ({ src, width="70px", height="40px", alt="No image" }) => (
+    TextBox.defaultProps = {
+      message: ""
+    };
+
+    TextBox.propTypes = {
+      message: PropTypes.string
+    };
+
+    const Image = ({ src, width, height, alt }) => (
       DOM.img(
         {
           src: src,
@@ -64,7 +73,21 @@
       )
     );
 
-    const BlogItem = ({ image, message, metaInfo, likes=0 }) => (
+    Image.defaultProps = {
+        src: "https://tasmedes.nl/wp-content/themes/nucleare-pro/images/no-image-box.png",
+        width: "70px",
+        height:  "40px",
+        alt: "No image"
+    };
+
+    Image.propTypes = {
+      src: PropTypes.string,
+      width: PropTypes.string,
+      height:  PropTypes.string,
+      alt: PropTypes.string
+    };
+
+    const BlogItem = ({ image, message, metaInfo, likes }) => (
       DOM.div(
         {
           className: "blog-item"
@@ -75,6 +98,20 @@
         React.createElement(MetaInfoBlock, metaInfo)
       )
     );
+
+    BlogItem.defaultProps = {
+      image: "https://tasmedes.nl/wp-content/themes/nucleare-pro/images/no-image-box.png",
+      message: "",
+      metaInfo: "",
+      likes: 0
+    };
+
+    BlogItem.propTypes = {
+      image: PropTypes.oneOfType([ PropTypes.string, PropTypes.object ]),
+      message: PropTypes.string,
+      metaInfo: PropTypes.oneOfType([ PropTypes.string, PropTypes.date ]),
+      likes: PropTypes.number
+    };
 
     const BlogList = ({ posts }) => (
       DOM.div(
@@ -98,6 +135,14 @@
       )
     );
 
+    BlogList.defaultProps = {
+      posts: null // [{}]
+    };
+
+    BlogList.propTypes = {
+      posts: PropTypes.array
+    };
+
     const MetaInfoItem = ({ item }) => (
       DOM.li(
         {
@@ -115,12 +160,20 @@
       )
     );
 
-    const MetaInfoBlock = ({ createdAt="", createdBy="", updatedAt="" }) => (
+    MetaInfoItem.defaultProps = {
+      item: null
+    };
+
+    MetaInfoItem.propTypes = {
+      item: PropTypes.oneOfType([ PropTypes.string, PropTypes.date ])
+    };
+
+    const MetaInfoBlock = ({ createdAt, createdBy, updatedAt }) => (
       React.createElement(
         "ul",
         {
           style: {
-            padding: '0'
+            padding: '0px'
           }
         },
         React.createElement( MetaInfoItem, { item: createdAt }),
@@ -128,6 +181,18 @@
         React.createElement( MetaInfoItem, { item: updatedAt })
       )
     );
+
+    MetaInfoBlock.defaultProps = {
+      createdAt: null,
+      createdBy: "",
+      updatedAt: null
+    };
+
+    MetaInfoBlock.propTypes = {
+      createdAt: PropTypes.oneOfType([ PropTypes.func, PropTypes.date ]),
+      createdBy: PropTypes.string,
+      updatedAt: PropTypes.oneOfType([ PropTypes.func, PropTypes.date ])
+    };
 
     class Like extends React.Component {
       constructor(props) {
@@ -161,6 +226,14 @@
           )
         )
       }
+    };
+
+    Like.defaultProps = {
+      count: 0
+    };
+
+    Like.propTypes = {
+      count: PropTypes.number
     };
 
     ReactDOM.render(
