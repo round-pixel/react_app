@@ -9,27 +9,48 @@
 <script src="https://cdn.jsdelivr.net/lodash/4/lodash.min.js"></script>
 <script src="https://fb.me/react-15.1.0.js"></script>
 <script src="https://fb.me/react-dom-15.1.0.js"></script>
+<script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment-with-locales.min.js"></script>
   <div id="app"></div>
   <script>
+    moment.lang('ru');
     DOM = React.DOM;
 
     const posts = [
       {
         image: {
-          src: 'https://reactjs.org/logo-og.png',
-          alt: 'Some text'
+          src: "https://reactjs.org/logo-og.png",
+          alt: "Some text"
         },
-        message: "Fisrt message"
+        message: "Fisrt message",
+        metaInfo: {
+          createdAt: new Date(2017, 0, 1, 2, 3, 4),
+          createdBy: "Mary",
+          updatedAt: new Date(2017, 0, 4, 3, 2, 1)
+        }
       },
       {
         image: {
-          src: 'https://reactjs.org/logo-og.png'
+          src: "https://reactjs.org/logo-og.png"
         },
-        message: "Second message"
+        message: "Second message",
+        metaInfo: {
+          createdAt: new Date(2017, 0, 5, 6, 7, 8),
+          createdBy: "Bob",
+          updatedAt: new Date(2017, 0, 1, 2, 3, 4),
+        }
       }
     ];
 
-    const TextBox = ({ message }) => DOM.span(null, message);
+    const TextBox = ({ message }) => (
+      DOM.span(
+        {
+          style: {
+            marginLeft: '20px',
+          }
+        },
+        message
+      )
+    );
 
     const Image = ({ src, width="70px", height="40px", alt="No image" }) => (
       DOM.img(
@@ -42,32 +63,72 @@
       )
     );
 
-    const BlogItem = ({ image, message }) => (
+    const BlogItem = ({ image, message, metaInfo }) => (
       DOM.div(
         {
-          className: 'blog-item'
+          className: "blog-item"
         },
         React.createElement(Image, image),
-        React.createElement(TextBox, { message })
+        React.createElement(TextBox, { message }),
+        React.createElement(MetaInfoBlock, metaInfo)
       )
     );
 
     const BlogList = ({ posts }) => (
       DOM.div(
         {
-          className: 'blog-list'
+          className: "blog-list"
         },
         posts.map(
           (post, key) => (
-            React.createElement(BlogItem, { key: key, image: post.image, message: post.message })
+            React.createElement(
+              BlogItem,
+              {
+                key: key,
+                image: post.image,
+                message: post.message,
+                metaInfo: post.metaInfo
+              }
+            )
           )
         )
       )
     );
 
+    const MetaInfoItem = ({ item }) => (
+      DOM.li(
+        {
+          style: {
+            display: 'inline',
+            margin: '10px',
+            color: '#757575'
+          }
+        },
+        (
+          item.constructor === Date
+          ? moment(item).format('MMMM Do YYYY, h:mm:ss')
+          : item
+        )
+      )
+    );
+
+    const MetaInfoBlock = ({ createdAt="", createdBy="", updatedAt="" }) => (
+      React.createElement(
+        "ul",
+        {
+          style: {
+            padding: '0'
+          }
+        },
+        React.createElement( MetaInfoItem, { item: createdAt }),
+        React.createElement( MetaInfoItem, { item: createdBy }),
+        React.createElement( MetaInfoItem, { item: updatedAt })
+      )
+    );
+
     ReactDOM.render(
       React.createElement(BlogList, { posts }),
-      document.getElementById('app')
+      document.getElementById("app")
     );
   </script>
 </body>
