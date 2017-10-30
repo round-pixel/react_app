@@ -6,9 +6,9 @@ const MetaInfoBlock = ({ createdAt, createdBy, updatedAt }) => (
         padding: '0px'
       }
     },
-    React.createElement( MetaInfoItem, { item: `Созданно: ${ dateToString(createdAt) }` }),
-    React.createElement( MetaInfoItem, { item: `Автор: ${ createdBy }` }),
-    React.createElement( MetaInfoItem, { item: `Обновленно: ${ dateToString(updatedAt) }` })
+    createdAt && React.createElement( MetaInfoItem, { item: `Созданно: ${ dateToString(createdAt) }` }),
+    createdBy && React.createElement( MetaInfoItem, { item: `Автор: ${ createdBy }` }),
+    updatedAt && React.createElement( MetaInfoItem, { item: `Обновленно: ${ dateToString(updatedAt) }` })
   )
 );
 
