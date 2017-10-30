@@ -36,9 +36,9 @@
         },
         message: "Second message",
         metaInfo: {
-          createdAt: new Date(2017, 0, 5, 6, 7, 8),
-          createdBy: "Bob",
-          updatedAt: new Date(2017, 0, 1, 2, 3, 4),
+          // createdAt: new Date(2017, 0, 5, 6, 7, 8),
+          // createdBy: "Bob",
+          updatedAt: new Date(2017, 0, 1, 2, 3, 4)
         }
       }
     ];
@@ -176,9 +176,9 @@
             padding: '0px'
           }
         },
-        React.createElement( MetaInfoItem, { item: `Созданно: ${ dateToString(createdAt) }` }),
-        React.createElement( MetaInfoItem, { item: `Автор: ${ createdBy }` }),
-        React.createElement( MetaInfoItem, { item: `Обновленно: ${ dateToString(updatedAt) }` })
+        createdAt && React.createElement( MetaInfoItem, { item: `Созданно: ${ dateToString(createdAt) }` }),
+        createdBy && React.createElement( MetaInfoItem, { item: `Автор: ${ createdBy }` }),
+        updatedAt && React.createElement( MetaInfoItem, { item: `Обновленно: ${ dateToString(updatedAt) }` })
       )
     );
 
