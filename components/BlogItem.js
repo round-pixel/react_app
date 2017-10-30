@@ -18,8 +18,8 @@ BlogItem.defaultProps = {
 };
 
 BlogItem.propTypes = {
-  image: PropTypes.oneOfType([ PropTypes.string, PropTypes.object ]),
+  image: PropTypes.object,
   message: PropTypes.string,
-  metaInfo: PropTypes.oneOfType([ PropTypes.string, PropTypes.date ]),
+  metaInfo: PropTypes.object,
   likes: PropTypes.number
 };

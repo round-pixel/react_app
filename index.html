@@ -100,16 +100,16 @@
     );
 
     BlogItem.defaultProps = {
-      image: "https://tasmedes.nl/wp-content/themes/nucleare-pro/images/no-image-box.png",
+      image: null,
       message: "",
       metaInfo: "",
       likes: 0
     };
 
     BlogItem.propTypes = {
-      image: PropTypes.oneOfType([ PropTypes.string, PropTypes.object ]),
+      image: PropTypes.object,
       message: PropTypes.string,
-      metaInfo: PropTypes.oneOfType([ PropTypes.string, PropTypes.date ]),
+      metaInfo: PropTypes.object,
       likes: PropTypes.number
     };
 
@@ -143,20 +143,20 @@
       posts: PropTypes.array
     };
 
+    function dateToString(date) {
+      return moment(date).format('MMMM Do YYYY, h:mm:ss');
+    };
+
     const MetaInfoItem = ({ item }) => (
       DOM.li(
         {
           style: {
-            display: 'inline',
+            listStyleType: 'none',
             margin: '10px',
             color: '#757575'
           }
         },
-        (
-          item.constructor === Date
-          ? moment(item).format('MMMM Do YYYY, h:mm:ss')
-          : item
-        )
+        item
       )
     );
 
@@ -176,9 +176,9 @@
             padding: '0px'
           }
         },
-        React.createElement( MetaInfoItem, { item: createdAt }),
-        React.createElement( MetaInfoItem, { item: createdBy }),
-        React.createElement( MetaInfoItem, { item: updatedAt })
+        React.createElement( MetaInfoItem, { item: `Созданно: ${ dateToString(createdAt) }` }),
+        React.createElement( MetaInfoItem, { item: `Автор: ${ createdBy }` }),
+        React.createElement( MetaInfoItem, { item: `Обновленно: ${ dateToString(updatedAt) }` })
       )
     );
 

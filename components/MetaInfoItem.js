@@ -2,16 +2,12 @@ const MetaInfoItem = ({ item }) => (
   DOM.li(
     {
       style: {
-        display: 'inline',
+        listStyleType: 'none',
         margin: '10px',
         color: '#757575'
       }
     },
-    (
-      item.constructor === Date
-      ? moment(item).format('MMMM Do YYYY, h:mm:ss')
-      : item
-    )
+    checkIfDate(item)
   )
 );
 
