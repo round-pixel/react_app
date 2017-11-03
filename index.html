@@ -18,6 +18,7 @@
 
     const posts = [
       {
+        id: 1,
         image: {
           src: "https://reactjs.org/logo-og.png",
           alt: "Some text"
@@ -31,6 +32,7 @@
         likes: 2
       },
       {
+        id: 2,
         image: {
           src: "https://reactjs.org/logo-og.png"
         },
@@ -87,14 +89,14 @@
       alt: PropTypes.string
     };
 
-    const BlogItem = ({ image, message, metaInfo, likes }) => (
+    const BlogItem = ({ id, image, message, metaInfo, likes, addLike }) => (
       DOM.div(
         {
           className: "blog-item"
         },
         React.createElement(Image, image),
         React.createElement(TextBox, { message }),
-        React.createElement(Like, { likes }),
+        React.createElement(Like, { likes, addLike, id }),
         React.createElement(MetaInfoBlock, metaInfo)
       )
     );
@@ -113,21 +115,23 @@
       likes: PropTypes.number
     };
 
-    const BlogList = ({ posts }) => (
+    const BlogList = ({ posts, addLike }) => (
       DOM.div(
         {
           className: "blog-list"
         },
         posts.map(
-          (post, key) => (
+          (post) => (
             React.createElement(
               BlogItem,
               {
-                key: key,
+                key: post.id,
+                id: post.id,
                 image: post.image,
                 message: post.message,
                 metaInfo: post.metaInfo,
-                likes: post.likes
+                likes: post.likes,
+                addLike
               }
             )
           )
@@ -142,6 +146,31 @@
     BlogList.propTypes = {
       posts: PropTypes.array
     };
+
+    class BlogPage extends React.Component {
+        constructor(props) {
+          super(props);
+
+          this.state = { posts };
+          this.addLike = this.addLike.bind(this);
+        }
+
+        addLike(id) {
+          let { posts } = this.state;
+          let post = posts[ posts.findIndex(x => x.id == id)];
+          post.likes ? post.likes += 1 : post.likes = 1;
+          this.setState({ posts: posts})
+        }
+
+        render() {
+          return (
+            React.createElement(
+              BlogList,
+              { posts: posts , addLike: this.addLike }
+            )
+          )
+        }
+    }
 
     function dateToString(date) {
       return moment(date).format('MMMM Do YYYY, h:mm:ss');
@@ -195,21 +224,16 @@
     };
 
     class Like extends React.Component {
-      constructor(props) {
-        super(props);
 
-        this.state = { count: props.likes }
+      addLike(id) {
+        this.props.addLike(this.props.id);
       }
-
-      handleClick() {
-        this.setState({ count: this.state.count + 1 })
-      };
 
       render() {
         return (
           DOM.div(
             null,
-            DOM.p(null, `Likes: ${ this.state.count }`),
+            DOM.p(null, `Likes: ${ this.props.likes }`),
             DOM.button(
               {
                 style: {
@@ -219,7 +243,7 @@
                   color: 'white',
                   padding: '10px 20px',
                 },
-                onClick: this.handleClick.bind(this)
+                onClick: this.addLike.bind(this)
               },
               "Like"
             )
@@ -237,7 +261,7 @@
     };
 
     ReactDOM.render(
-      React.createElement(BlogList, { posts }),
+      React.createElement(BlogPage, { posts }),
       document.getElementById("app")
     );
   </script>
