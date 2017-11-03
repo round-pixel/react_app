@@ -23,7 +23,3 @@ MetaInfoBlock.propTypes = {
   createdBy: PropTypes.string,
   updatedAt: PropTypes.oneOfType([ PropTypes.func, PropTypes.date ])
 };
-
-function dateToString(date) {
-  return moment(date).format('MMMM Do YYYY, h:mm:ss');
-};

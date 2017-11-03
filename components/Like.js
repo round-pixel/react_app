@@ -1,19 +1,14 @@
 class Like extends React.Component {
-  constructor(props) {
-    super(props);
 
-    this.state = { count: props.likes }
+  addLike(id) {
+    this.props.addLike(this.props.id);
   }
-
-  handleClick() {
-    this.setState({ count: this.state.count + 1 })
-  };
 
   render() {
     return (
       DOM.div(
         null,
-        DOM.p(null, `Likes: ${ this.state.count }`),
+        DOM.p(null, `Likes: ${ this.props.likes }`),
         DOM.button(
           {
             style: {
@@ -23,19 +18,11 @@ class Like extends React.Component {
               color: 'white',
               padding: '10px 20px',
             },
-            onClick: this.handleClick.bind(this)
+            onClick: this.addLike.bind(this)
           },
           "Like"
         )
       )
     )
   }
-};
-
-Like.defaultProps = {
-  count: 0
-};
-
-Like.propTypes = {
-  count: PropTypes.number
 };

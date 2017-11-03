@@ -7,7 +7,7 @@ const MetaInfoItem = ({ item }) => (
         color: '#757575'
       }
     },
-    checkIfDate(item)
+    item
   )
 );
 

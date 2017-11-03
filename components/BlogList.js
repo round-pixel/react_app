@@ -1,18 +1,24 @@
-const BlogList = ({ posts }) => (
+const BlogList = ({ posts, addLike }) => (
   DOM.div(
     {
-      className: "blog-list"
+      className: "blog-list",
+      style: {
+        width: '40wh',
+        float: 'left'
+      }
     },
     posts.map(
-      (post, key) => (
+      (post) => (
         React.createElement(
           BlogItem,
           {
-            key: key,
+            key: post.id,
+            id: post.id,
             image: post.image,
             message: post.message,
             metaInfo: post.metaInfo,
-            likes: post.likes
+            likes: post.likes,
+            addLike
           }
         )
       )
