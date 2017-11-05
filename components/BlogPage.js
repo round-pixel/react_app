@@ -9,9 +9,13 @@ class BlogPage extends React.Component {
 
   addLike(id) {
     let { posts } = this.state;
-    let post = posts[ posts.findIndex(x => x.id == id) ];
-    post.likes ? post.likes += 1 : post.likes = 1;
-    this.setState({ posts: posts })
+    let index = posts.findIndex((post) => post.id == id );
+    this.setState({
+      posts: update(
+        posts,
+        { [index]: { likes: { $apply: (x) => x ? x + 1 : 1 } } }
+      )
+    })
   }
 
   likeStat(posts) {
@@ -46,7 +50,3 @@ class BlogPage extends React.Component {
     );
   }
 }
-
-function dateToString(date) {
-  return moment(date).format('MMMM Do YYYY, h:mm:ss');
-};
