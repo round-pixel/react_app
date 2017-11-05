@@ -18,6 +18,48 @@
     moment.locale('ru');
     const { DOM, PropTypes } = React;
 
+    const styles = {
+      textBoxStyle: {
+        marginLeft: '20px'
+      },
+
+      blogItemStyle: {
+        border: "1px solid #CCCCCC",
+        margin: "10px",
+        padding: "20px 50px",
+        backgroundColor: "white",
+        width: "40vw"
+      },
+
+      blogListStyle: {
+        width: '40wh',
+        float: 'left'
+      },
+
+      metaInfoItem: {
+        listStyleType: 'none',
+        margin: '10px',
+        color: '#757575'
+      },
+
+      metaInfoBlock: {
+        padding: '0px'
+      },
+
+      likeStyle: {
+        background: '#51ABC5',
+        border: 'none',
+        borderRadius: '5px',
+        color: 'white',
+        padding: '10px 20px',
+      },
+
+      pieChartStyle: {
+        width: "45vw",
+        float: "right"
+      }
+    }
+
     const posts = [
       {
         id: 1,
@@ -61,9 +103,7 @@
     const TextBox = ({ message }) => (
       DOM.span(
         {
-          style: {
-            marginLeft: '20px',
-          }
+          style: styles.textBoxStyle
         },
         message
       )
@@ -106,13 +146,7 @@
       DOM.div(
         {
           className: "blog-item",
-          style: {
-            border: "1px solid #CCCCCC",
-            margin: "10px",
-            padding: "20px 50px",
-            backgroundColor: "white",
-            width: "40vw"
-          }
+          style: styles.blogItemStyle
         },
         React.createElement(Image, image),
         React.createElement(TextBox, { message }),
@@ -139,10 +173,7 @@
       DOM.div(
         {
           className: "blog-list",
-          style: {
-            width: '40wh',
-            float: 'left'
-          }
+          style: styles.blogListStyle
         },
         posts.map(
           (post) => (
@@ -227,11 +258,7 @@
     const MetaInfoItem = ({ item }) => (
       DOM.li(
         {
-          style: {
-            listStyleType: 'none',
-            margin: '10px',
-            color: '#757575'
-          }
+          style: styles.metaInfoItem
         },
         item
       )
@@ -249,9 +276,7 @@
       React.createElement(
         "ul",
         {
-          style: {
-            padding: '0px'
-          }
+          style: styles.metaInfoBlock
         },
         createdAt && React.createElement( MetaInfoItem, { item: `Созданно: ${ dateToString(createdAt) }` }),
         createdBy && React.createElement( MetaInfoItem, { item: `Автор: ${ createdBy }` }),
@@ -284,13 +309,7 @@
             DOM.p(null, `Likes: ${ this.props.likes }`),
             DOM.button(
               {
-                style: {
-                  background: '#51ABC5',
-                  border: 'none',
-                  borderRadius: '5px',
-                  color: 'white',
-                  padding: '10px 20px',
-                },
+                style: styles.likeStyle,
                 onClick: this.addLike.bind(this)
               },
               "Like"
@@ -323,10 +342,7 @@
             'div',
             {
               ref: "chart",
-              style: {
-                width: "45vw",
-                float: "right"
-              }
+              style: styles.pieChartStyle
             }
           )
         );
