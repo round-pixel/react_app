@@ -21,10 +21,7 @@ class PieChart extends React.Component {
         'div',
         {
           ref: "chart",
-          style: {
-            width: "45vw",
-            float: "right"
-          }
+          style: styles.pieChartStyle
         }
       )
     );

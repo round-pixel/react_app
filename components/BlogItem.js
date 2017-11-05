@@ -2,13 +2,7 @@ const BlogItem = ({ id, image, message, metaInfo, likes, addLike }) => (
   DOM.div(
     {
       className: "blog-item",
-      style: {
-        border: "1px solid #CCCCCC",
-        margin: "10px",
-        padding: "20px 50px",
-        backgroundColor: "white",
-        width: "40vw"
-      }
+      style: styles.blogItemStyle
     },
     React.createElement(Image, image),
     React.createElement(TextBox, { message }),

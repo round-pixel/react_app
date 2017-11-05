@@ -2,10 +2,7 @@ const BlogList = ({ posts, addLike }) => (
   DOM.div(
     {
       className: "blog-list",
-      style: {
-        width: '40wh',
-        float: 'left'
-      }
+      style: styles.blogListStyle
     },
     posts.map(
       (post) => (
@@ -25,11 +22,3 @@ const BlogList = ({ posts, addLike }) => (
     )
   )
 );
-
-BlogList.defaultProps = {
-  posts: null // [{}]
-};
-
-BlogList.propTypes = {
-  posts: PropTypes.array
-};

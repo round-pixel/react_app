@@ -1,11 +1,7 @@
 const MetaInfoItem = ({ item }) => (
   DOM.li(
     {
-      style: {
-        listStyleType: 'none',
-        margin: '10px',
-        color: '#757575'
-      }
+      style: styles.metaInfoItemStyle
     },
     item
   )

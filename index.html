@@ -36,13 +36,13 @@
         float: 'left'
       },
 
-      metaInfoItem: {
+      metaInfoItemStyle: {
         listStyleType: 'none',
         margin: '10px',
         color: '#757575'
       },
 
-      metaInfoBlock: {
+      metaInfoBlockStyle: {
         padding: '0px'
       },
 
@@ -213,22 +213,22 @@
 
       addLike(id) {
         let { posts } = this.state;
-        let post = posts[ posts.findIndex(x => x.id == id)];
+        let post = posts[ posts.findIndex(x => x.id == id) ];
         post.likes ? post.likes += 1 : post.likes = 1;
-        this.setState({ posts: posts})
+        this.setState({ posts: posts })
       }
 
       likeStat(posts) {
-        let like_arr = [];
+        let likeArr = [];
         posts.map(
           (post) => (
-            like_arr.push([
+            likeArr.push([
               post.message ? post.message : '',
               post.likes ? post.likes : 0
             ])
           )
         );
-        return like_arr;
+        return likeArr;
       }
 
       render() {
@@ -258,7 +258,7 @@
     const MetaInfoItem = ({ item }) => (
       DOM.li(
         {
-          style: styles.metaInfoItem
+          style: styles.metaInfoItemStyle
         },
         item
       )
@@ -276,7 +276,7 @@
       React.createElement(
         "ul",
         {
-          style: styles.metaInfoBlock
+          style: styles.metaInfoBlockStyle
         },
         createdAt && React.createElement( MetaInfoItem, { item: `Созданно: ${ dateToString(createdAt) }` }),
         createdBy && React.createElement( MetaInfoItem, { item: `Автор: ${ createdBy }` }),
@@ -298,9 +298,7 @@
 
     class Like extends React.Component {
 
-      addLike(id) {
-        this.props.addLike(this.props.id);
-      }
+      addLike = ( id ) => this.props.addLike(id);
 
       render() {
         return (
@@ -310,7 +308,7 @@
             DOM.button(
               {
                 style: styles.likeStyle,
-                onClick: this.addLike.bind(this)
+                onClick: () => this.addLike(this.props.id)
               },
               "Like"
             )

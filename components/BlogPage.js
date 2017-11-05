@@ -9,22 +9,22 @@ class BlogPage extends React.Component {
 
   addLike(id) {
     let { posts } = this.state;
-    let post = posts[ posts.findIndex(x => x.id == id)];
+    let post = posts[ posts.findIndex(x => x.id == id) ];
     post.likes ? post.likes += 1 : post.likes = 1;
-    this.setState({ posts: posts})
+    this.setState({ posts: posts })
   }
 
   likeStat(posts) {
-    let like_arr = [];
+    let likeArr = [];
     posts.map(
       (post) => (
-        like_arr.push([
+        likeArr.push([
           post.message ? post.message : '',
           post.likes ? post.likes : 0
         ])
       )
     );
-    return like_arr;
+    return likeArr;
   }
 
   render() {
@@ -46,3 +46,7 @@ class BlogPage extends React.Component {
     );
   }
 }
+
+function dateToString(date) {
+  return moment(date).format('MMMM Do YYYY, h:mm:ss');
+};

@@ -2,9 +2,7 @@ const MetaInfoBlock = ({ createdAt, createdBy, updatedAt }) => (
   React.createElement(
     "ul",
     {
-      style: {
-        padding: '0px'
-      }
+      style: styles.metaInfoBlockStyle
     },
     createdAt && React.createElement( MetaInfoItem, { item: `Созданно: ${ dateToString(createdAt) }` }),
     createdBy && React.createElement( MetaInfoItem, { item: `Автор: ${ createdBy }` }),
