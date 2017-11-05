@@ -1,9 +1,7 @@
 const TextBox = ({ message }) => (
   DOM.span(
     {
-      style: {
-        marginLeft: '20px',
-      }
+      style: styles.textBoxStyle
     },
     message
   )

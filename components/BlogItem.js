@@ -1,17 +1,18 @@
-const BlogItem = ({ image, message, metaInfo, likes }) => (
+const BlogItem = ({ id, image, message, metaInfo, likes, addLike }) => (
   DOM.div(
     {
-      className: "blog-item"
+      className: "blog-item",
+      style: styles.blogItemStyle
     },
     React.createElement(Image, image),
     React.createElement(TextBox, { message }),
-    React.createElement(Like, { likes }),
+    React.createElement(Like, { likes, addLike, id }),
     React.createElement(MetaInfoBlock, metaInfo)
   )
 );
 
 BlogItem.defaultProps = {
-  image: "https://tasmedes.nl/wp-content/themes/nucleare-pro/images/no-image-box.png",
+  image: null,
   message: "",
   metaInfo: "",
   likes: 0

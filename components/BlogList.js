@@ -1,29 +1,24 @@
-const BlogList = ({ posts }) => (
+const BlogList = ({ posts, addLike }) => (
   DOM.div(
     {
-      className: "blog-list"
+      className: "blog-list",
+      style: styles.blogListStyle
     },
     posts.map(
-      (post, key) => (
+      (post) => (
         React.createElement(
           BlogItem,
           {
-            key: key,
+            key: post.id,
+            id: post.id,
             image: post.image,
             message: post.message,
             metaInfo: post.metaInfo,
-            likes: post.likes
+            likes: post.likes,
+            addLike
           }
         )
       )
     )
   )
 );
-
-BlogList.defaultProps = {
-  posts: null // [{}]
-};
-
-BlogList.propTypes = {
-  posts: PropTypes.array
-};

@@ -5,19 +5,66 @@
   <meta name="viewport" content="width=device-width">
   <title>ReactApp</title>
 </head>
-<body>
+<body style="background-color: #F2F2F2">
 <script src="https://cdn.jsdelivr.net/lodash/4/lodash.min.js"></script>
 <script src="https://fb.me/react-15.1.0.js"></script>
 <script src="https://fb.me/react-dom-15.1.0.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 <script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment-with-locales.min.js"></script>
-  <div id="app"></div>
-  <script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.18/c3.min.js"></script>
+<script src="https://wzrd.in/standalone/immutability-helper?.js"></script>
+  <div id="app" ></div>
+  <script type = "text/babel">
     moment.locale('ru');
-    DOM = React.DOM;
-    PropTypes = React.PropTypes;
+    const { DOM, PropTypes } = React;
+    const update = immutabilityHelper;
+
+    const styles = {
+      textBoxStyle: {
+        marginLeft: '20px'
+      },
+
+      blogItemStyle: {
+        border: "1px solid #CCCCCC",
+        margin: "10px",
+        padding: "20px 50px",
+        backgroundColor: "white",
+        width: "40vw"
+      },
+
+      blogListStyle: {
+        width: '40wh',
+        float: 'left'
+      },
+
+      metaInfoItemStyle: {
+        listStyleType: 'none',
+        margin: '10px',
+        color: '#757575'
+      },
+
+      metaInfoBlockStyle: {
+        padding: '0px'
+      },
+
+      likeStyle: {
+        background: '#51ABC5',
+        border: 'none',
+        borderRadius: '5px',
+        color: 'white',
+        padding: '10px 20px',
+      },
+
+      pieChartStyle: {
+        width: "45vw",
+        float: "right"
+      }
+    }
 
     const posts = [
       {
+        id: 1,
         image: {
           src: "https://reactjs.org/logo-og.png",
           alt: "Some text"
@@ -31,24 +78,34 @@
         likes: 2
       },
       {
+        id: 2,
         image: {
           src: "https://reactjs.org/logo-og.png"
         },
         message: "Second message",
         metaInfo: {
-          // createdAt: new Date(2017, 0, 5, 6, 7, 8),
-          // createdBy: "Bob",
           updatedAt: new Date(2017, 0, 1, 2, 3, 4)
         }
+      },
+      {
+        id: 3,
+        image: {
+          src: "https://reactjs.org/logo-og.png"
+        },
+        message: "Third message",
+        metaInfo: {
+          createdAt: new Date(2017, 0, 5, 6, 7, 8),
+          createdBy: "Коля",
+          updatedAt: new Date(2017, 0, 1, 2, 3, 4)
+        },
+        likes: 10
       }
     ];
 
     const TextBox = ({ message }) => (
       DOM.span(
         {
-          style: {
-            marginLeft: '20px',
-          }
+          style: styles.textBoxStyle
         },
         message
       )
@@ -87,14 +144,15 @@
       alt: PropTypes.string
     };
 
-    const BlogItem = ({ image, message, metaInfo, likes }) => (
+    const BlogItem = ({ id, image, message, metaInfo, likes, addLike }) => (
       DOM.div(
         {
-          className: "blog-item"
+          className: "blog-item",
+          style: styles.blogItemStyle
         },
         React.createElement(Image, image),
         React.createElement(TextBox, { message }),
-        React.createElement(Like, { likes }),
+        React.createElement(Like, { likes, addLike, id }),
         React.createElement(MetaInfoBlock, metaInfo)
       )
     );
@@ -113,21 +171,24 @@
       likes: PropTypes.number
     };
 
-    const BlogList = ({ posts }) => (
+    const BlogList = ({ posts, addLike }) => (
       DOM.div(
         {
-          className: "blog-list"
+          className: "blog-list",
+          style: styles.blogListStyle
         },
         posts.map(
-          (post, key) => (
+          (post) => (
             React.createElement(
               BlogItem,
               {
-                key: key,
+                key: post.id,
+                id: post.id,
                 image: post.image,
                 message: post.message,
                 metaInfo: post.metaInfo,
-                likes: post.likes
+                likes: post.likes,
+                addLike
               }
             )
           )
@@ -143,6 +204,59 @@
       posts: PropTypes.array
     };
 
+    class BlogPage extends React.Component {
+      constructor(props) {
+        super(props);
+
+        this.state = { posts };
+        this.addLike = this.addLike.bind(this);
+        this.likeStat = this.likeStat.bind(this);
+      }
+
+      addLike(id) {
+        let { posts } = this.state;
+        let index = posts.findIndex((post) => post.id == id );
+        this.setState({
+          posts: update(
+            posts,
+            { [index]: { likes: { $apply: (x) => x ? x + 1 : 1 } } }
+          )
+        })
+      }
+
+      likeStat(posts) {
+        let likeArr = [];
+        posts.map(
+          (post) => (
+            likeArr.push([
+              post.message ? post.message : '',
+              post.likes ? post.likes : 0
+            ])
+          )
+        );
+        return likeArr;
+      }
+
+      render() {
+        let posts = this.state.posts;
+        return (
+          DOM.div(
+            null,
+            React.createElement(
+              BlogList,
+              { posts: posts , addLike: this.addLike }
+            ),
+            React.createElement(
+              PieChart,
+              {
+                columns: this.likeStat(posts)
+              }
+            )
+          )
+        );
+      }
+    }
+
     function dateToString(date) {
       return moment(date).format('MMMM Do YYYY, h:mm:ss');
     };
@@ -150,11 +264,7 @@
     const MetaInfoItem = ({ item }) => (
       DOM.li(
         {
-          style: {
-            listStyleType: 'none',
-            margin: '10px',
-            color: '#757575'
-          }
+          style: styles.metaInfoItemStyle
         },
         item
       )
@@ -172,9 +282,7 @@
       React.createElement(
         "ul",
         {
-          style: {
-            padding: '0px'
-          }
+          style: styles.metaInfoBlockStyle
         },
         createdAt && React.createElement( MetaInfoItem, { item: `Созданно: ${ dateToString(createdAt) }` }),
         createdBy && React.createElement( MetaInfoItem, { item: `Автор: ${ createdBy }` }),
@@ -195,31 +303,18 @@
     };
 
     class Like extends React.Component {
-      constructor(props) {
-        super(props);
 
-        this.state = { count: props.likes }
-      }
-
-      handleClick() {
-        this.setState({ count: this.state.count + 1 })
-      };
+      addLike = ( id ) => this.props.addLike(id);
 
       render() {
         return (
           DOM.div(
             null,
-            DOM.p(null, `Likes: ${ this.state.count }`),
+            DOM.p(null, `Likes: ${ this.props.likes }`),
             DOM.button(
               {
-                style: {
-                  background: '#51ABC5',
-                  border: 'none',
-                  borderRadius: '5px',
-                  color: 'white',
-                  padding: '10px 20px',
-                },
-                onClick: this.handleClick.bind(this)
+                style: styles.likeStyle,
+                onClick: () => this.addLike(this.props.id)
               },
               "Like"
             )
@@ -228,16 +323,38 @@
       }
     };
 
-    Like.defaultProps = {
-      count: 0
-    };
+    class PieChart extends React.Component {
 
-    Like.propTypes = {
-      count: PropTypes.number
-    };
+      componentDidMount() {
+        this.chart = c3.generate({
+          bindto: ReactDOM.findDOMNode(this.refs.chart),
+          data: { columns: this.props.columns, type: "pie" }
+        })
+      }
+
+      componentWillUnMount() {
+        this.chart.destroy();
+      }
+
+      componentWillReceiveProps() {
+        this.chart.load({ columns: this.props.columns });
+      }
+
+      render() {
+        return (
+          React.createElement(
+            'div',
+            {
+              ref: "chart",
+              style: styles.pieChartStyle
+            }
+          )
+        );
+      }
+    }
 
     ReactDOM.render(
-      React.createElement(BlogList, { posts }),
+      React.createElement(BlogPage, { posts }),
       document.getElementById("app")
     );
   </script>
