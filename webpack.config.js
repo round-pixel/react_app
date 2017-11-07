@@ -7,13 +7,16 @@ var root = path.join(process.cwd(), 'src');
 
 module.exports = {
   entry: [
+    'react-hot-loader/patch',
+    'webpack-dev-server/client?http://localhost:3001',
+    'webpack/hot/only-dev-server',
     './src/index.js'
   ],
 
   output: {
     path: path.join(process.cwd(), 'dist'),
     publicPath: '/assets/',
-    fileName: 'bundle.js'
+    filename: 'bundle.js'
   },
 
   module: {
@@ -27,6 +30,13 @@ module.exports = {
   },
 
   resolve: {
-    root: root
-  }
+    modules: [
+      'node_modules',
+      root
+    ]
+  },
+
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ]
 };

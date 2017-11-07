@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DOM from 'react-dom-factories';
 
-import styles from './constants/styles';
-import Image from './Image';
-import TextBox from './TextBox';
-import Like from './Like';
+import styles from '../../constants/styles';
+import Image from '../elements/Image';
+import TextBox from '../elements/TextBox';
+import Like from '../elements/Like';
 import MetaInfoBlock from './MetaInfoBlock';
 
 const BlogItem = ({ id, image, message, metaInfo, likes, addLike }) => (

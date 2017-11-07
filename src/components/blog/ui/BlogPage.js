@@ -2,7 +2,7 @@ import React from 'react';
 import DOM from 'react-dom-factories';
 import update from 'immutability-helper';
 
-import posts from './constants/static/posts';
+import posts from '../../constants/static/posts';
 import BlogList from './BlogList';
 import PieChart from './PieChart';
 
@@ -17,7 +17,7 @@ class BlogPage extends React.Component {
 
   addLike(id) {
     const { posts } = this.state;
-    const index = posts.findIndex((post) => post.id == id );
+    const index = posts.findIndex((post) => post.id == id);
     this.setState({
       posts: update(
         posts,

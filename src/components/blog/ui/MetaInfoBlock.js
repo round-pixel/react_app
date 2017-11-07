@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './constants/styles';
-import dateToString from './constants/date';
-import MetaInfoItem from './MetaInfoItem';
+import styles from '../../constants/styles';
+import dateToString from '../../constants/date';
+import MetaInfoItem from '../elements/MetaInfoItem';
 
 const MetaInfoBlock = ({ createdAt, createdBy, updatedAt }) => (
   React.createElement(
@@ -11,9 +11,9 @@ const MetaInfoBlock = ({ createdAt, createdBy, updatedAt }) => (
     {
       style: styles.metaInfoBlockStyle
     },
-    createdAt && React.createElement(MetaInfoItem, {item: `Созданно: ${ dateToString(createdAt)}`}),
-    createdBy && React.createElement(MetaInfoItem, { item: `Автор: ${createdBy }`}),
-    updatedAt && React.createElement(MetaInfoItem, { item: `Обновленно: ${dateToString(updatedAt) }`})
+    createdAt && React.createElement(MetaInfoItem, {item: `Созданно: ${dateToString(createdAt)}`}),
+    createdBy && React.createElement(MetaInfoItem, { item: `Автор: ${createdBy}`}),
+    updatedAt && React.createElement(MetaInfoItem, { item: `Обновленно: ${dateToString(updatedAt)}`})
   )
 );
 

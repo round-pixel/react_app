@@ -1,11 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom-factories';
+import ReactDOM from 'react-dom';
 import c3 from 'c3';
 
-import styles from './constants/styles';
+import styles from '../../constants/styles';
 
 class PieChart extends React.Component {
-
   componentDidMount() {
     this.chart = c3.generate({
       bindto: ReactDOM.findDOMNode(this.refs.chart),

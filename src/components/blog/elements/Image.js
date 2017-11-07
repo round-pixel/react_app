@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import DOM from 'react-dom-factories';
 
-
 const Image = ({ src, width, height, alt }) => (
   DOM.img(
     {
@@ -26,3 +25,5 @@ Image.propTypes = {
   height:  PropTypes.string,
   alt: PropTypes.string
 };
+
+export default Image;
