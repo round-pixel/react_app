@@ -13,7 +13,7 @@ const MetaInfoItem = ({ item }) => (
 );
 
 MetaInfoItem.defaultProps = {
-  item: null
+  item: ''
 };
 
 MetaInfoItem.propTypes = {

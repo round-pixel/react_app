@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DOM from 'react-dom-factories';
 
 import styles from '../../constants/styles';
 import Image from '../elements/Image';
@@ -9,19 +8,16 @@ import Like from '../elements/Like';
 import MetaInfoBlock from './MetaInfoBlock';
 
 const BlogItem = ({ id, image, message, metaInfo, likes, addLike }) => (
-  DOM.div(
-    {
-      className: 'blog-item',
-      style: styles.blogItemStyle
-    },
-    React.createElement(Image, image),
-    React.createElement(TextBox, { message }),
-    React.createElement(Like, { likes, addLike, id }),
-    React.createElement(MetaInfoBlock, metaInfo)
-  )
+  <div className='blog-item' style={ styles.blogItemStyle }>
+    <Image image={ image } />
+    <TextBox message={ message } />
+    <Like props={ likes, addLike, id } />
+    <MetaInfoBlock metaInfo={ metaInfo } />
+  </div>
 );
 
 BlogItem.defaultProps = {
+  id: null,
   image: null,
   message: '',
   metaInfo: '',
@@ -29,10 +25,12 @@ BlogItem.defaultProps = {
 };
 
 BlogItem.propTypes = {
+  id: PropTypes.number,
   image: PropTypes.object,
   message: PropTypes.string,
   metaInfo: PropTypes.object,
-  likes: PropTypes.number
+  likes: PropTypes.number,
+  addLike: PropTypes.func
 };
 
 export default BlogItem;

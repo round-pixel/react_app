@@ -24,9 +24,9 @@ MetaInfoBlock.defaultProps = {
 };
 
 MetaInfoBlock.propTypes = {
-  createdAt: PropTypes.oneOfType([ PropTypes.func, PropTypes.date ]),
+  createdAt: PropTypes.oneOfType([ PropTypes.string, PropTypes.date ]),
   createdBy: PropTypes.string,
-  updatedAt: PropTypes.oneOfType([ PropTypes.func, PropTypes.date ])
+  updatedAt: PropTypes.oneOfType([ PropTypes.string, PropTypes.date ])
 };
 
 export default MetaInfoBlock;

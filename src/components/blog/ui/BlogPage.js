@@ -1,5 +1,4 @@
 import React from 'react';
-import DOM from 'react-dom-factories';
 import update from 'immutability-helper';
 
 import posts from '../../constants/static/posts';
@@ -42,19 +41,10 @@ class BlogPage extends React.Component {
   render() {
     const posts = this.state.posts;
     return (
-      DOM.div(
-        null,
-        React.createElement(
-          BlogList,
-          { posts , addLike: this.addLike }
-        ),
-        React.createElement(
-          PieChart,
-          {
-            columns: this.likeStat(posts)
-          }
-        )
-      )
+      <div>
+        <BlogList posts={ posts } addLike={ this.addLike } />
+        <PieChart columns={ this.likeStat(posts) } />
+      </div>
     );
   }
 }
