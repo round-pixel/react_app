@@ -1,25 +1,17 @@
+import React from 'react';
 import PropTypes from 'prop-types';
-import DOM from 'react-dom-factories';
 
-const Image = ({ src, width, height, alt }) => (
-  DOM.img(
-    {
-      src,
-      width,
-      height,
-      alt
-    }
-  )
+const Image = ({ props }) => (
+  <img
+    src={ props.src }
+    width={ props.width ? props.width : '200px'}
+    height={ props.height ? props.height : '120px' }
+    alt={ props.alt }
+  />
 );
 
-Image.defaultProps = {
-  src: 'https://tasmedes.nl/wp-content/themes/nucleare-pro/images/no-image-box.png',
-  width: '70px',
-  height:  '40px',
-  alt: 'No imag'
-};
-
 Image.propTypes = {
+  props: PropTypes.object,
   src: PropTypes.string,
   width: PropTypes.string,
   height:  PropTypes.string,

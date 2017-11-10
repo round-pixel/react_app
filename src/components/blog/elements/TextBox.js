@@ -1,15 +1,10 @@
+import React from 'react';
 import PropTypes from 'prop-types';
-import DOM from 'react-dom-factories';
 
 import styles from '../../constants/styles';
 
 const TextBox = ({ message }) => (
-  DOM.span(
-    {
-      style: styles.textBoxStyle
-    },
-    message
-  )
+  <span style={ styles.textBoxStyle } >{ message }</span>
 );
 
 TextBox.defaultProps = {

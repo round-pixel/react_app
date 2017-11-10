@@ -5,11 +5,11 @@ import styles from '../../constants/styles';
 import dateToString from '../../constants/date';
 import MetaInfoItem from '../elements/MetaInfoItem';
 
-const MetaInfoBlock = ({ createdAt, createdBy, updatedAt }) => (
+const MetaInfoBlock = ({ props }) => (
   <ul style={ styles.metaInfoBlockStyle }>
-    <MetaInfoItem item={ createdAt && `Созданно: ${dateToString(createdAt)}` } />
-    <MetaInfoItem item={ createdBy && `Автор: ${createdBy}`} />
-    <MetaInfoItem item={ updatedAt && `Созданно: ${dateToString(updatedAt)}` } />
+    { props.createdAt && <MetaInfoItem item={ `Созданно: ${dateToString(props.createdAt)}` } /> }
+    { props.createdBy && <MetaInfoItem item={ `Автор: ${props.createdBy}`} /> }
+    { props.updatedAt && <MetaInfoItem item={ `Созданно: ${dateToString(props.updatedAt)}` } /> }
   </ul>
 );
 
@@ -20,9 +20,10 @@ MetaInfoBlock.defaultProps = {
 };
 
 MetaInfoBlock.propTypes = {
-  createdAt: PropTypes.oneOfType([ PropTypes.string, PropTypes.date ]),
+  props: PropTypes.object,
+  createdAt: PropTypes.oneOfType([ PropTypes.string, PropTypes.instanceOf(Date) ]),
   createdBy: PropTypes.string,
-  updatedAt: PropTypes.oneOfType([ PropTypes.string, PropTypes.date ])
+  updatedAt: PropTypes.oneOfType([ PropTypes.string, PropTypes.instanceOf(Date) ])
 };
 
 export default MetaInfoBlock;

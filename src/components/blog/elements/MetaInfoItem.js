@@ -1,15 +1,10 @@
+import React from 'react';
 import PropTypes from 'prop-types';
-import DOM from 'react-dom-factories';
 
 import styles from '../../constants/styles';
 
 const MetaInfoItem = ({ item }) => (
-  DOM.li(
-    {
-      style: styles.metaInfoItemStyle
-    },
-    item
-  )
+  <li style={ styles.metaInfoItemStyle }>{ item }</li>
 );
 
 MetaInfoItem.defaultProps = {
@@ -17,7 +12,7 @@ MetaInfoItem.defaultProps = {
 };
 
 MetaInfoItem.propTypes = {
-  item: PropTypes.oneOfType([ PropTypes.string, PropTypes.date ])
+  item: PropTypes.oneOfType([ PropTypes.string, PropTypes.instanceOf(Date) ])
 };
 
 export default MetaInfoItem;

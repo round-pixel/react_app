@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import styles from '../../constants/styles';
 
 class Like extends React.Component {
-
-
   addLike(id) {
     return this.props.addLike(id);
   }
