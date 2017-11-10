@@ -9,10 +9,19 @@ import MetaInfoBlock from './MetaInfoBlock';
 
 const BlogItem = ({ id, image, message, metaInfo, likes, addLike }) => (
   <div className='blog-item' style={ styles.blogItemStyle }>
-    <Image image={ image } />
+    <Image
+      src={ image.src }
+      width={ image.width }
+      height={ image.height }
+      alt={ image.alt }
+    />
     <TextBox message={ message } />
     <Like props={ likes, addLike, id } />
-    <MetaInfoBlock metaInfo={ metaInfo } />
+    <MetaInfoBlock
+      createdAt={ metaInfo.createdAt }
+      createdBy={ metaInfo.createdBy }
+      updatedAt={ metaInfo.updatedAt }
+    />
   </div>
 );
 

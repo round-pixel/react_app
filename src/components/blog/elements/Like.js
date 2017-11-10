@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import styles from '../../constants/styles';
 
 class Like extends React.Component {
+
+
   addLike(id) {
     return this.props.addLike(id);
   }
@@ -11,8 +13,10 @@ class Like extends React.Component {
   render() {
     return (
       <div>
-        <p>Likes: {this.props.likes}</p>
-        <button style={ styles.likeStyle } onClick={ () => this.addLike(this.props.id) }>
+        <p>Likes: { this.props.likes }</p>
+        <button
+          style={ styles.likeStyle }
+          onClick={ () => this.addLike(this.props.id) }>
           Like
         </button>
       </div>

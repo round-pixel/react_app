@@ -6,15 +6,11 @@ import dateToString from '../../constants/date';
 import MetaInfoItem from '../elements/MetaInfoItem';
 
 const MetaInfoBlock = ({ createdAt, createdBy, updatedAt }) => (
-  React.createElement(
-    'ul',
-    {
-      style: styles.metaInfoBlockStyle
-    },
-    createdAt && React.createElement(MetaInfoItem, {item: `Созданно: ${dateToString(createdAt)}`}),
-    createdBy && React.createElement(MetaInfoItem, { item: `Автор: ${createdBy}`}),
-    updatedAt && React.createElement(MetaInfoItem, { item: `Обновленно: ${dateToString(updatedAt)}`})
-  )
+  <ul style={ styles.metaInfoBlockStyle }>
+    <MetaInfoItem item={ createdAt && `Созданно: ${dateToString(createdAt)}` } />
+    <MetaInfoItem item={ createdBy && `Автор: ${createdBy}`} />
+    <MetaInfoItem item={ updatedAt && `Созданно: ${dateToString(updatedAt)}` } />
+  </ul>
 );
 
 MetaInfoBlock.defaultProps = {

@@ -1,32 +1,27 @@
 import React from 'react';
-import DOM from 'react-dom-factories';
+import PropTypes from 'prop-types';
 
 import styles from '../../constants/styles';
 import BlogItem from './BlogItem';
 
 const BlogList = ({ posts, addLike }) => (
-  DOM.div(
-    {
-      className: 'blog-list',
-      style: styles.blogListStyle
-    },
-    posts.map(
-      (post) => (
-        React.createElement(
-          BlogItem,
-          {
-            key: post.id,
-            id: post.id,
-            image: post.image,
-            message: post.message,
-            metaInfo: post.metaInfo,
-            likes: post.likes,
-            addLike
-          }
-        )
-      )
-    )
-  )
+  <div className='blog-list' style={ styles.blogListStyle }>
+    { posts.map((post) => 
+      <BlogItem
+        key={ post.id }
+        id={ post.id }
+        image={ post.image }
+        metaInfo={ post.metaInfo }
+        likes={ post.likes }
+        addLike={ addLike }
+      />
+    )}
+  </div>
 );
+
+BlogList.propTypes = {
+  posts: PropTypes.array,
+  addLike: PropTypes.func
+};
 
 export default BlogList;
