@@ -2,10 +2,10 @@ const posts = [
   {
     id: 1,
     image: {
-      src: 'https://reactjs.org/logo-og.png',
+      src: 'dist/images/summer.jpg',
       alt: 'Some text'
     },
-    message: 'Fisrt message',
+    message: 'Summer days',
     metaInfo: {
       createdAt: new Date(2017, 0, 1, 2, 3, 4),
       createdBy: 'Mary',
@@ -16,9 +16,9 @@ const posts = [
   {
     id: 2,
     image: {
-      src: 'https://reactjs.org/logo-og.png'
+      src: 'dist/images/river.jpg'
     },
-    message: 'Second message',
+    message: 'The long river from india',
     metaInfo: {
       updatedAt: new Date(2017, 0, 1, 2, 3, 4)
     }
@@ -26,9 +26,9 @@ const posts = [
   {
     id: 3,
     image: {
-      src: 'https://reactjs.org/logo-og.png'
+      src: 'dist/images/mountains.jpg'
     },
-    message: 'Third message',
+    message: 'Great mountains of australia',
     metaInfo: {
       createdAt: new Date(2017, 0, 5, 6, 7, 8),
       createdBy: 'Mike',

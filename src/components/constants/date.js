@@ -1,7 +1,7 @@
 import moment from 'moment';
 
 function dateToString(date) {
-  return moment(date).format('MMMM Do YYYY, h:mm:ss');
+  return moment(date).format('MMMM Do');
 }
 
 export default dateToString;

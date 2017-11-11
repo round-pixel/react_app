@@ -1,42 +1,30 @@
+const MUTED = '#757575';
+
 const styles = {
-  textBoxStyle: {
-    marginLeft: '20px'
-  },
-
-  blogItemStyle: {
-    border: '1px solid #CCCCCC',
-    margin: '10px',
-    padding: '20px 50px',
-    backgroundColor: 'white',
-    width: '40vw'
-  },
-
-  blogListStyle: {
-    width: '40wh',
-    float: 'left'
-  },
-
   metaInfoItemStyle: {
     listStyleType: 'none',
+    display: 'inline',
     margin: '10px',
-    color: '#757575'
+    color: MUTED
   },
 
   metaInfoBlockStyle: {
+    marginTop: '10px',
     padding: '0px'
   },
 
   likeStyle: {
-    background: '#51ABC5',
-    border: 'none',
-    borderRadius: '5px',
-    color: 'white',
-    padding: '10px 20px',
+    marginTop: '10px',
+    color: MUTED
   },
 
   pieChartStyle: {
-    width: '45vw',
-    float: 'right'
+    marginTop: '15px'
+  },
+
+  CardStyle: {
+    marginTop: '15px',
+    border: '5px solid #DEDEDE'
   }
 };
 

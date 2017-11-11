@@ -1,6 +1,8 @@
 import React from 'react';
 import update from 'immutability-helper';
 
+import { Row, Col } from 'reactstrap';
+
 import posts from '../../constants/static/posts';
 import BlogList from './BlogList';
 import PieChart from './PieChart';
@@ -41,10 +43,14 @@ class BlogPage extends React.Component {
   render() {
     const posts = this.state.posts;
     return (
-      <div>
-        <BlogList posts={ posts } addLike={ this.addLike } />
-        <PieChart columns={ this.likeStat(posts) } />
-      </div>
+      <Row>
+        <Col lg="8">
+          <BlogList posts={ posts } addLike={ this.addLike } />
+        </Col>
+        <Col lg="4">
+          <PieChart columns={ this.likeStat(posts) } />
+        </Col>
+      </Row>
     );
   }
 }

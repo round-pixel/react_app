@@ -7,9 +7,9 @@ import MetaInfoItem from '../elements/MetaInfoItem';
 
 const MetaInfoBlock = ({ props }) => (
   <ul style={ styles.metaInfoBlockStyle }>
-    { props.createdAt && <MetaInfoItem item={ `Созданно: ${dateToString(props.createdAt)}` } /> }
-    { props.createdBy && <MetaInfoItem item={ `Автор: ${props.createdBy}`} /> }
-    { props.updatedAt && <MetaInfoItem item={ `Созданно: ${dateToString(props.updatedAt)}` } /> }
+    { props.createdAt && <MetaInfoItem item={ `Created: ${dateToString(props.createdAt)}` } /> }
+    { props.createdBy && <MetaInfoItem item={ `Author: ${props.createdBy}`} /> }
+    { props.updatedAt && <MetaInfoItem item={ `Updated: ${dateToString(props.updatedAt)}` } /> }
   </ul>
 );
 
