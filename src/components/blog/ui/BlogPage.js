@@ -1,3 +1,10 @@
+import React from 'react';
+import update from 'immutability-helper';
+
+import posts from '../../constants/static/posts';
+import BlogList from './BlogList';
+import PieChart from './PieChart';
+
 class BlogPage extends React.Component {
   constructor(props) {
     super(props);
@@ -8,18 +15,18 @@ class BlogPage extends React.Component {
   }
 
   addLike(id) {
-    let { posts } = this.state;
-    let index = posts.findIndex((post) => post.id == id );
+    const { posts } = this.state;
+    const index = posts.findIndex((post) => post.id == id);
     this.setState({
       posts: update(
         posts,
         { [index]: { likes: { $apply: (x) => x ? x + 1 : 1 } } }
       )
-    })
+    });
   }
 
   likeStat(posts) {
-    let likeArr = [];
+    const likeArr = [];
     posts.map(
       (post) => (
         likeArr.push([
@@ -32,21 +39,14 @@ class BlogPage extends React.Component {
   }
 
   render() {
-    let posts = this.state.posts;
+    const posts = this.state.posts;
     return (
-      DOM.div(
-        null,
-        React.createElement(
-          BlogList,
-          { posts: posts , addLike: this.addLike }
-        ),
-        React.createElement(
-          PieChart,
-          {
-            columns: this.likeStat(posts)
-          }
-        )
-      )
+      <div>
+        <BlogList posts={ posts } addLike={ this.addLike } />
+        <PieChart columns={ this.likeStat(posts) } />
+      </div>
     );
   }
 }
+
+export default BlogPage;
