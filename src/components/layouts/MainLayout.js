@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Container, Navbar, NavbarBrand, Button } from 'reactstrap';
+import { Navbar,  NavbarBrand, Nav, NavItem,
+  NavLink, Button, Container } from 'reactstrap';
 
 import Link from 'components/blog/elements/Link';
 
@@ -11,8 +12,8 @@ import history from 'components/helpers/history';
 
 const MainLayout = ({ children }) => (
   <div>
+    <Header />
     <Container>
-      <Header />
       { children }
     </Container>
   </div>
@@ -22,16 +23,49 @@ MainLayout.propTypes = {
   children: PropTypes.node
 };
 
-const Header = () => (
-  <Navbar color="info" fixed="top">
-    <NavbarBrand className="text-white">
-      <Link to="/" style={ styles.logoLinkStyle }>
-        The Nature
-      </Link>
-    </NavbarBrand>
-    <GoBackButton />
-  </Navbar>
-);
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.toggle = this.toggle.bind(this);
+    this.state = { isOpen: false };
+  }
+
+  toggle() {
+    this.setState({ isOpen: !this.state.isOpen });
+  }
+
+  render() {
+    return (
+      <Navbar color="info" fixed="top">
+        <NavbarBrand className="text-white">
+          <Link to="/" style={ styles.logoLinkStyle }>
+            The Nature
+          </Link>
+        </NavbarBrand>
+        <Nav className="ml-auto" >
+          <NavItem>
+            <NavLink>
+              <Link to="/about" style={ styles.headerLinkStyle }>
+                About
+              </Link>
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink >
+              <Link to="/contact" style={ styles.headerLinkStyle }>
+                Contact
+              </Link>
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <GoBackButton />
+          </NavItem>
+        </Nav>
+      </Navbar>
+    );
+  }
+}
 
 const GoBackButton = () => (
   <Button color="danger" onClick={ () => history.goBack() }>

@@ -34,9 +34,15 @@ const styles = {
     marginTop: '10px'
   },
 
-  logoLinkStyle: {
+  headerLinkStyle: {
     textDecoration: 'none',
     color: 'white'
+  },
+
+  logoLinkStyle: {
+    textDecoration: 'none',
+    color: 'white',
+    fontWeight: 'bolder'
   }
 };
 
