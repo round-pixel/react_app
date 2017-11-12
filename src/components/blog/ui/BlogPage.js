@@ -3,7 +3,8 @@ import update from 'immutability-helper';
 
 import { Row, Col } from 'reactstrap';
 
-import posts from '../../constants/static/posts';
+import request from 'superagent';
+
 import BlogList from './BlogList';
 import PieChart from './PieChart';
 
@@ -11,9 +12,13 @@ class BlogPage extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { posts };
+    this.state = { posts: [] };
     this.addLike = this.addLike.bind(this);
     this.likeStat = this.likeStat.bind(this);
+  }
+
+  componentDidMount() {
+    this.fetchPosts();
   }
 
   addLike(id) {
@@ -40,8 +45,17 @@ class BlogPage extends React.Component {
     return likeArr;
   }
 
+  fetchPosts() {
+    request.get(
+      'http://localhost:3002/',
+      {},
+      (err, res) => this.setState({ posts: res.body })
+    );
+  }
+
   render() {
     const posts = this.state.posts;
+
     return (
       <Row>
         <Col lg="8">

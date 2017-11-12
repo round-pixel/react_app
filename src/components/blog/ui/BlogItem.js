@@ -49,9 +49,9 @@ const BlogItem = ({ id, image, message, metaInfo, likes, addLike }) => (
 
 BlogItem.defaultProps = {
   id: null,
-  image: null,
+  image: {},
   message: '',
-  metaInfo: '',
+  metaInfo: {},
   likes: 0
 };
 
