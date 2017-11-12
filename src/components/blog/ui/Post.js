@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import request from 'superagent';
 import BlogItem from './BlogItem';
+import BlogPage from './BlogPage';
 
 class Post extends React.Component {
   constructor(props) {
@@ -28,14 +29,17 @@ class Post extends React.Component {
     const post = this.state.post;
 
     return (
-      <BlogItem
-        key={ post.id }
-        id={ post.id }
-        message={ post.message }
-        image={ post.image }
-        metaInfo={ post.metaInfo }
-        likes={ post.likes }
-      />
+      <BlogPage>
+        <BlogItem
+          key={ post.id }
+          id={ post.id }
+          message={ post.message }
+          image={ post.image }
+          metaInfo={ post.metaInfo }
+          likes={ post.likes }
+          addLike={ this.props.addLike }
+        />
+      </BlogPage>
     );
   }
 }
@@ -51,7 +55,8 @@ Post.defaultProps = {
 };
 
 Post.propTypes = {
-  params: PropTypes.object
+  params: PropTypes.object,
+  addLike: PropTypes.func
 };
 
 export default Post;
