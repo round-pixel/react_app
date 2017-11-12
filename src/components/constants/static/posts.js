@@ -2,7 +2,7 @@ const posts = [
   {
     id: 1,
     image: {
-      src: 'dist/images/summer.jpg',
+      src: '/dist/images/summer.jpg',
       alt: 'Some text'
     },
     message: 'Summer days',
@@ -16,9 +16,9 @@ const posts = [
   {
     id: 2,
     image: {
-      src: 'dist/images/river.jpg'
+      src: '/dist/images/river.jpg'
     },
-    message: 'The long river from india',
+    message: 'The long river',
     metaInfo: {
       updatedAt: new Date(2017, 0, 1, 2, 3, 4)
     }
@@ -26,7 +26,7 @@ const posts = [
   {
     id: 3,
     image: {
-      src: 'dist/images/mountains.jpg'
+      src: '/dist/images/mountains.jpg'
     },
     message: 'Great mountains of australia',
     metaInfo: {

@@ -25,6 +25,18 @@ const styles = {
   CardStyle: {
     marginTop: '15px',
     border: '5px solid #DEDEDE'
+  },
+
+  linkStyle: {
+    textDecoration: 'none',
+    fontSize: '16px',
+    float: 'right',
+    marginTop: '10px'
+  },
+
+  logoLinkStyle: {
+    textDecoration: 'none',
+    color: 'white'
   }
 };
 

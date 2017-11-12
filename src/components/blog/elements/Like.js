@@ -12,7 +12,9 @@ class Like extends React.Component {
   render() {
     return (
       <div>
-        <p className="float-left" style={ styles.likeStyle } >Likes: { this.props.likes }</p>
+        <div className="float-left" style={ styles.likeStyle }>
+          Likes: { this.props.likes }
+        </div>
         <Button
           className="float-right"
           color="danger"
