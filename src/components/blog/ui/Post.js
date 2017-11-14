@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+
 import request from 'superagent';
 import BlogItem from './BlogItem';
 import BlogPage from './BlogPage';
@@ -13,7 +14,7 @@ class Post extends React.Component {
   }
 
   componentDidMount() {
-    const postId = this.props.params.id;
+    const postId = this.props.match.params.id;
     this.fetchPost(postId);
   }
 
@@ -56,7 +57,8 @@ Post.defaultProps = {
 
 Post.propTypes = {
   params: PropTypes.object,
-  addLike: PropTypes.func
+  addLike: PropTypes.func,
+  match: PropTypes.object
 };
 
 export default Post;

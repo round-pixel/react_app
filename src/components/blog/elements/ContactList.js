@@ -9,7 +9,7 @@ const ContactList = ({ contacts }) => (
     </li>
     <li>
       <span> Github nick: </span>
-      <Link href={ contacts.github.url }>
+      <Link to={ contacts.github.url }>
         { contacts.github.name }
       </Link>
     </li>
