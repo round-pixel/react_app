@@ -1,27 +1,30 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import { Navbar,  NavbarBrand, Nav, NavItem,
   NavLink, Button, Container } from 'reactstrap';
 
+import { Route } from 'react-router-dom';
+
 import Link from 'components/blog/elements/Link';
+import BlogPage from 'components/blog/ui/BlogPage';
+import About from 'components/blog/view/AboutPage';
+import Contact from 'components/blog/view/ContactPage';
 
 import styles from 'components/constants/styles';
 
 import history from 'components/helpers/history';
 
-const MainLayout = ({ children }) => (
+
+const MainLayout = () => (
   <div>
     <Header />
     <Container>
-      { children }
+      <Route exact path="/" component={ BlogPage } />
+      <Route path="/about" component={ About } />
+      <Route path="/contact" component={ Contact } />
     </Container>
   </div>
 );
-
-MainLayout.propTypes = {
-  children: PropTypes.node
-};
 
 class Header extends React.Component {
   constructor(props) {

@@ -1,11 +1,13 @@
 import React from 'react';
 
-import { Router, browserHistory } from 'react-router';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-import routes from 'components/routes';
+import MainLayout from 'components/layouts/MainLayout';
 
 const App = () => (
-  <Router history={browserHistory} routes={routes} />
+  <Router>
+    <MainLayout />
+  </Router>
 );
 
 export default App;
