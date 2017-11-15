@@ -9,7 +9,6 @@ import Link from 'components/blog/elements/Link';
 import BlogPage from 'components/blog/ui/BlogPage';
 import About from 'components/blog/view/AboutPage';
 import Contact from 'components/blog/view/ContactPage';
-import Post from 'components/blog/ui/Post';
 
 import styles from 'components/constants/styles';
 
@@ -19,10 +18,9 @@ const MainLayout = () => (
   <div>
     <Header />
     <Container>
-      <Route exact path="/" component={ BlogPage } />
       <Route path="/about" component={ About } />
       <Route path="/contact" component={ Contact } />
-      <Route exact path="/posts/:id" component={ Post } />
+      <BlogPage />
     </Container>
   </div>
 );

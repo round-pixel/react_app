@@ -3,10 +3,13 @@ import update from 'immutability-helper';
 
 import { Row, Col } from 'reactstrap';
 
+import { Route } from 'react-router-dom';
+
 import request from 'superagent';
 
 import BlogList from './BlogList';
 import PieChart from './PieChart';
+import Post from 'components/blog/ui/Post';
 
 class BlogPage extends React.Component {
   constructor(props) {
@@ -59,10 +62,15 @@ class BlogPage extends React.Component {
     return (
       <Row>
         <Col lg="8">
-          <BlogList posts={ posts } addLike={ this.addLike } />
+          <Route exact path="/" render={ () =>
+            <BlogList posts={ posts } addLike={ this.addLike }/> }
+          />
+          <Route path="/posts/:id" component={ Post } />
         </Col>
         <Col lg="4">
-          <PieChart columns={ this.likeStat(posts) } />
+          <Route exact path="/" render={ () =>
+            <PieChart columns={ this.likeStat(posts) } /> }
+          />
         </Col>
       </Row>
     );
