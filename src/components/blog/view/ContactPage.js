@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Card, CardText, CardBody, CardHeader } from 'reactstrap';
 
-import ContactList from 'components/blog/elements/ContactList';
+import ContactList from './elements/ContactList';
 
 const ContactPage = () => (
   <Card>

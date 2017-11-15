@@ -21,7 +21,9 @@ class Post extends React.Component {
     request.get(
       'http://localhost:3002/',
       {},
-      (err, res) => this.setState({ post: res.body[id - 1] })
+      (err, res) => this.setState({
+        post: res.body[res.body.findIndex((x) => x.id == id)]
+      })
     );
   }
 
