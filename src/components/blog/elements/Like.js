@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from '../../constants/styles';
+import { Button } from 'reactstrap';
+import styles from 'constants/styles';
 
 class Like extends React.Component {
   addLike(id) {
@@ -11,12 +12,15 @@ class Like extends React.Component {
   render() {
     return (
       <div>
-        <p>Likes: { this.props.likes }</p>
-        <button
-          style={ styles.likeStyle }
+        <div className="float-left" style={ styles.likeStyle }>
+          Likes: { this.props.likes }
+        </div>
+        <Button
+          className="float-right"
+          color="danger"
           onClick={ () => this.addLike(this.props.id) }>
           Like
-        </button>
+        </Button>
       </div>
     );
   }

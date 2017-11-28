@@ -1,15 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from '../../constants/styles';
+import styles from 'constants/styles';
 import BlogItem from './BlogItem';
 
 const BlogList = ({ posts, addLike }) => (
-  <div className='blog-list' style={ styles.blogListStyle }>
-    { posts.map((post) => 
+  <div style={ styles.blogListStyle }>
+    { posts.map((post) =>
       <BlogItem
         key={ post.id }
         id={ post.id }
+        message={ post.message }
         image={ post.image }
         metaInfo={ post.metaInfo }
         likes={ post.likes }

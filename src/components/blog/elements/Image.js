@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 const Image = ({ props }) => (
   <img
     src={ props.src }
-    width={ props.width ? props.width : '200px'}
-    height={ props.height ? props.height : '120px' }
+    width={ props.width ? props.width : '100%'}
+    height={ props.height ? props.height : '140px' }
     alt={ props.alt }
   />
 );

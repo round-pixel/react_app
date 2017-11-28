@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from '../../constants/styles';
-
 const TextBox = ({ message }) => (
-  <span style={ styles.textBoxStyle } >{ message }</span>
+  <span>
+    { message }
+  </span>
 );
 
 TextBox.defaultProps = {

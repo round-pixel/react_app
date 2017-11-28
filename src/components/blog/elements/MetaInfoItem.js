@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from '../../constants/styles';
+import styles from 'constants/styles';
 
 const MetaInfoItem = ({ item }) => (
   <li style={ styles.metaInfoItemStyle }>{ item }</li>
