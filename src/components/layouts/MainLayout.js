@@ -9,6 +9,7 @@ import Link from 'components/blog/elements/Link';
 import BlogPage from 'components/blog/ui/BlogPage';
 import About from 'components/blog/view/AboutPage';
 import Contact from 'components/blog/view/ContactPage';
+import SearchBlock from 'components/blog/ui/search/SearchBlock';
 
 import styles from 'constants/styles';
 
@@ -42,7 +43,8 @@ class Header extends React.Component {
           <NavbarBrand tag={Link} to="/" style={ styles.logoLinkStyle }>
             The Nature
           </NavbarBrand>
-          <Nav className="ml-auto" >
+          <SearchBlock />
+          <Nav>
             <NavItem>
               <NavLink tag={Link} to="/about" style={ styles.headerLinkStyle }>
                 About
