@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Link from 'components/blog/elements/Link';
 
 const ContactList = ({ contacts }) => (
   <ul>
@@ -9,9 +8,9 @@ const ContactList = ({ contacts }) => (
     </li>
     <li>
       <span> Github nick: </span>
-      <Link to={ contacts.github.url }>
+      <a href={ contacts.github.url }>
         { contacts.github.name }
-      </Link>
+      </a>
     </li>
   </ul>
 );

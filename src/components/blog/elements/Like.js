@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Button } from 'reactstrap';
-import styles from '../../constants/styles';
+import styles from 'constants/styles';
 
 class Like extends React.Component {
   addLike(id) {

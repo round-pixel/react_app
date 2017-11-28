@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Router } from 'react-router-dom';
 
-import history from 'components/helpers/history';
+import history from 'helpers/history';
 
 import MainLayout from 'components/layouts/MainLayout';
 

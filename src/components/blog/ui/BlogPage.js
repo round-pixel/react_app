@@ -11,6 +11,8 @@ import BlogList from './BlogList';
 import PieChart from './PieChart';
 import Post from 'components/blog/ui/Post';
 
+import { postsUrl } from 'constants/url';
+
 class BlogPage extends React.Component {
   constructor(props) {
     super(props);
@@ -50,7 +52,7 @@ class BlogPage extends React.Component {
 
   fetchPosts() {
     request.get(
-      'http://localhost:3002/',
+      postsUrl,
       {},
       (err, res) => this.setState({ posts: res.body })
     );

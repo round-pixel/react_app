@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-
 import request from 'superagent';
 import BlogItem from './BlogItem';
+
+import { postUrl } from 'constants/url';
 
 class Post extends React.Component {
   constructor(props) {
@@ -19,7 +20,7 @@ class Post extends React.Component {
 
   fetchPost(id) {
     request.get(
-      'http://localhost:3002/',
+      postUrl,
       {},
       (err, res) => this.setState({
         post: res.body[res.body.findIndex((x) => x.id == id)]

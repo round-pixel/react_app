@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Card, CardText, CardBody, CardHeader } from 'reactstrap';
+import { Card, CardBody, CardHeader } from 'reactstrap';
 
 import ContactList from './elements/ContactList';
 
@@ -10,9 +10,7 @@ const ContactPage = () => (
       { ContactText.header }
     </CardHeader>
     <CardBody>
-      <CardText>
-        <ContactList contacts={ ContactText } />
-      </CardText>
+      <ContactList contacts={ ContactText } />
     </CardBody>
   </Card>
 );

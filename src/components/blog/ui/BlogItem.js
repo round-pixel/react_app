@@ -10,9 +10,9 @@ import Like from '../elements/Like';
 import MetaInfoBlock from './MetaInfoBlock';
 import Link from 'components/blog/elements/Link';
 
-import styles from '../../constants/styles';
+import styles from 'constants/styles';
 
-import { postPath } from 'components/helpers/routes';
+import { postPath } from 'helpers/routes';
 
 const BlogItem = ({ id, image, message, metaInfo, likes, addLike }) => (
   <Card style={ styles.CardStyle } >

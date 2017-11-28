@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from '../../constants/styles';
-import dateToString from '../../constants/date';
+import styles from 'constants/styles';
+import dateToString from 'constants/date';
 import MetaInfoItem from '../elements/MetaInfoItem';
 
 const MetaInfoBlock = ({ props }) => (
