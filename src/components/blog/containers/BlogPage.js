@@ -9,7 +9,7 @@ import request from 'superagent';
 
 import BlogList from './BlogList';
 import PieChart from './PieChart';
-import Post from 'components/blog/ui/Post';
+import Post from 'components/blog/containers/Post';
 
 import { API_ROOT } from 'constants/API';
 import { fetchPosts } from 'actions/Posts';

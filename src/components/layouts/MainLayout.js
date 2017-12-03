@@ -6,10 +6,10 @@ import { Navbar,  NavbarBrand, Nav, NavItem,
 import { Route } from 'react-router-dom';
 
 import Link from 'components/blog/elements/Link';
-import BlogPage from 'components/blog/ui/BlogPage';
-import About from 'components/blog/view/AboutPage';
-import Contact from 'components/blog/view/ContactPage';
-import SearchBlock from 'components/blog/ui/search/SearchBlock';
+import BlogPage from 'components/blog/containers/BlogPage';
+import About from 'components/layouts/AboutPage';
+import Contact from 'components/layouts/ContactPage';
+import SearchBlock from 'components/layouts/containers/SearchBlock';
 
 import styles from 'constants/styles';
 
