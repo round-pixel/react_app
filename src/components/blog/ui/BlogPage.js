@@ -11,7 +11,9 @@ import BlogList from './BlogList';
 import PieChart from './PieChart';
 import Post from 'components/blog/ui/Post';
 
-import { postsUrl } from 'constants/url';
+import { API_ROOT } from 'constants/API';
+import { fetchPosts } from 'actions/Posts';
+import { fetchPost } from 'actions/Post';
 
 class BlogPage extends React.Component {
   constructor(props) {
@@ -52,7 +54,7 @@ class BlogPage extends React.Component {
 
   fetchPosts() {
     request.get(
-      postsUrl,
+      API_ROOT,
       {},
       (err, res) => this.setState({ posts: res.body })
     );
@@ -64,10 +66,23 @@ class BlogPage extends React.Component {
     return (
       <Row>
         <Col lg="8">
-          <Route exact path="/" render={ () =>
-            <BlogList posts={ posts } addLike={ this.addLike }/> }
+          <Route
+            exact
+            path="/"
+            render={ () =>
+              <BlogList posts={ posts } addLike={ this.addLike }/>
+            }
+            prepareData={ (store) => {
+              store.dispatch(fetchPosts());
+            }}
           />
-          <Route path="/posts/:id" component={ Post } />
+          <Route
+            path="/posts/:id"
+            component={ Post }
+            prepareData={ (store, query, params) => {
+              store.dispatch(fetchPost(params.id));
+            }}
+          />
         </Col>
         <Col lg="4">
           <Route exact path="/" render={ () =>

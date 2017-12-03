@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import request from 'superagent';
 import BlogItem from './BlogItem';
 
-import { postUrl } from 'constants/url';
+import { API_ROOT } from 'constants/API';
 
 class Post extends React.Component {
   constructor(props) {
@@ -20,7 +20,7 @@ class Post extends React.Component {
 
   fetchPost(id) {
     request.get(
-      postUrl,
+      API_ROOT,
       {},
       (err, res) => this.setState({
         post: res.body[res.body.findIndex((x) => x.id == id)]
