@@ -1,31 +1,18 @@
 import React from 'react';
 import update from 'immutability-helper';
+import PropTypes from 'prop-types';
 
 import { Row, Col } from 'reactstrap';
 
-import { Route } from 'react-router-dom';
-
-import request from 'superagent';
-
 import BlogList from './BlogList';
 import PieChart from './PieChart';
-import Post from 'components/blog/containers/Post';
-
-import { API_ROOT } from 'constants/API';
-import { fetchPosts } from 'actions/Posts';
-import { fetchPost } from 'actions/Post';
 
 class BlogPage extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { posts: [] };
     this.addLike = this.addLike.bind(this);
     this.likeStat = this.likeStat.bind(this);
-  }
-
-  componentDidMount() {
-    this.fetchPosts();
   }
 
   addLike(id) {
@@ -52,42 +39,16 @@ class BlogPage extends React.Component {
     return likeArr;
   }
 
-  fetchPosts() {
-    request.get(
-      API_ROOT,
-      {},
-      (err, res) => this.setState({ posts: res.body })
-    );
-  }
-
   render() {
-    const posts = this.state.posts;
+    const { posts } = this.props;
 
     return (
       <Row>
         <Col lg="8">
-          <Route
-            exact
-            path="/"
-            render={ () =>
-              <BlogList posts={ posts } addLike={ this.addLike }/>
-            }
-            prepareData={ (store) => {
-              store.dispatch(fetchPosts());
-            }}
-          />
-          <Route
-            path="/posts/:id"
-            component={ Post }
-            prepareData={ (store, query, params) => {
-              store.dispatch(fetchPost(params.id));
-            }}
-          />
+          <BlogList posts={ posts } addLike={ this.addLike } />
         </Col>
         <Col lg="4">
-          <Route exact path="/" render={ () =>
-            <PieChart columns={ this.likeStat(posts) } /> }
-          />
+          <PieChart columns={ this.likeStat(posts) } />
         </Col>
       </Row>
     );
@@ -95,3 +56,7 @@ class BlogPage extends React.Component {
 }
 
 export default BlogPage;
+
+BlogPage.propTypes = {
+  posts: PropTypes.array
+};

@@ -20,6 +20,7 @@ const errorPost = () => ({
 export function fetchPost(id) {
   return (dispatch) => {
     dispatch(requestPost(id));
+
     return request
       .get(`${API_ROOT}/posts/${id}`)
       .end((err, response) => {

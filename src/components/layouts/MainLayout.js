@@ -1,25 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Navbar,  NavbarBrand, Nav, NavItem,
   NavLink, Container } from 'reactstrap';
 
-import { Route } from 'react-router-dom';
-
 import Link from 'components/blog/elements/Link';
-import BlogPage from 'components/blog/containers/BlogPage';
-import About from 'components/layouts/AboutPage';
-import Contact from 'components/layouts/ContactPage';
 import SearchBlock from 'components/layouts/containers/SearchBlock';
 
 import styles from 'constants/styles';
 
-const MainLayout = () => (
+const MainLayout = ({ children }) => (
   <div>
     <Header />
     <Container>
-      <Route path="/about" component={ About } />
-      <Route path="/contact" component={ Contact } />
-      <BlogPage />
+      { children }
     </Container>
   </div>
 );
@@ -63,3 +57,7 @@ class Header extends React.Component {
 }
 
 export default MainLayout;
+
+MainLayout.propTypes = {
+  children: PropTypes.object
+};
