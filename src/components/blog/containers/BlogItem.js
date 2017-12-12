@@ -6,7 +6,7 @@ import { Card, CardText, CardBody,
 
 import Image from '../elements/Image';
 import TextBox from '../elements/TextBox';
-import Like from '../elements/Like';
+import LikeContainer from 'containers/LikeContainer';
 import MetaInfoBlock from './MetaInfoBlock';
 import Link from 'components/blog/elements/Link';
 
@@ -40,7 +40,7 @@ const BlogItem = ({ id, image, message, metaInfo, likes }) => (
           <MetaInfoBlock props={ metaInfo } />
         </Col>
         <Col lg="3">
-          <Like likes={ likes } id={ id } />
+          <LikeContainer id={ id } likes={ likes } />
         </Col>
       </Row>
     </CardFooter>

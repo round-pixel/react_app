@@ -8,7 +8,7 @@ import { Row, Col } from 'reactstrap';
 const Post = ({ post }) => (
   <Row>
     <Col lg="8">
-      { post &&
+      { post && 
         <BlogItem
           key={ post.id }
           id={ post.id }
