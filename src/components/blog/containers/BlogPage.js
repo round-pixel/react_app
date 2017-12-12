@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
 
 import BlogList from './BlogList';
-import PieChart from './PieChart';
+import PieChartContainer from 'containers/PieChartContainer';
 
 const BlogPage = (posts) => (
   <Row>
@@ -12,6 +12,7 @@ const BlogPage = (posts) => (
       <BlogList {...posts} />
     </Col>
     <Col lg="4">
+      <PieChartContainer />
     </Col>
   </Row>
 );

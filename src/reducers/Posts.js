@@ -10,11 +10,14 @@ const initialState = {
 };
 
 function addLike(posts, id, count) {
-  const index = posts.findIndex((post) => post.id == id);
-  return update(
-    posts,
-    { [index]: { likes: { $apply: () => count + 1 } } }
-  );
+  if (posts) {
+    const index = posts.findIndex((post) => post.id == id);
+    return update(
+      posts,
+      { [index]: { likes: { $apply: () => count + 1 } } }
+    );
+  }
+  return posts;
 }
 
 export default function(state = initialState, action) {

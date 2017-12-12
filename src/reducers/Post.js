@@ -10,10 +10,13 @@ const initialState = {
 };
 
 function addLike(post, id, count) {
-  return update(
-    post,
-    { likes: { $apply: () => count + 1 } }
-  );
+  if (post) {
+    return update(
+      post,
+      { likes: { $apply: () => count + 1 } }
+    );
+  }
+  return post;
 }
 
 export default function(state = initialState, action) {
