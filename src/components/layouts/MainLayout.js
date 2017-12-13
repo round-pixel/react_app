@@ -5,7 +5,7 @@ import { Navbar,  NavbarBrand, Nav, NavItem,
   NavLink, Container } from 'reactstrap';
 
 import Link from 'components/blog/elements/Link';
-import SearchBlock from 'components/layouts/containers/SearchBlock';
+import SearchBlockContainer from 'containers/SearchBlockContainer';
 
 import styles from 'constants/styles';
 
@@ -37,7 +37,7 @@ class Header extends React.Component {
           <NavbarBrand tag={Link} to="/" style={ styles.logoLinkStyle }>
             The Nature
           </NavbarBrand>
-          <SearchBlock />
+          <SearchBlockContainer />
           <Nav>
             <NavItem>
               <NavLink tag={Link} to="/about" style={ styles.headerLinkStyle }>
