@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styles from 'constants/styles';
 import BlogItem from './BlogItem';
 
-const BlogList = ({ posts, addLike }) => (
+const BlogList = ({ posts }) => (
   <div style={ styles.blogListStyle }>
     { posts.map((post) =>
       <BlogItem
@@ -14,7 +14,6 @@ const BlogList = ({ posts, addLike }) => (
         image={ post.image }
         metaInfo={ post.metaInfo }
         likes={ post.likes }
-        addLike={ addLike }
       />
     )}
   </div>

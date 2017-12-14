@@ -6,15 +6,15 @@ import { Card, CardText, CardBody,
 
 import Image from '../elements/Image';
 import TextBox from '../elements/TextBox';
-import Like from '../elements/Like';
+import LikeContainer from 'containers/LikeContainer';
 import MetaInfoBlock from './MetaInfoBlock';
 import Link from 'components/blog/elements/Link';
 
 import styles from 'constants/styles';
 
-import { postPath } from 'helpers/routes';
+import { postsPath } from 'helpers/routes';
 
-const BlogItem = ({ id, image, message, metaInfo, likes, addLike }) => (
+const BlogItem = ({ id, image, message, metaInfo, likes }) => (
   <Card style={ styles.CardStyle } >
     <Image props={ image } />
     <CardBody>
@@ -24,7 +24,7 @@ const BlogItem = ({ id, image, message, metaInfo, likes, addLike }) => (
             <TextBox message={ message } />
           </Col>
           <Col lg="3">
-            <Link to={ postPath(id) } style={ styles.linkStyle }>
+            <Link to={ postsPath(id) } style={ styles.linkStyle }>
               Read more...
             </Link>
           </Col>
@@ -40,7 +40,7 @@ const BlogItem = ({ id, image, message, metaInfo, likes, addLike }) => (
           <MetaInfoBlock props={ metaInfo } />
         </Col>
         <Col lg="3">
-          <Like likes={ likes } id={ id } addLike={ addLike } />
+          <LikeContainer id={ id } likes={ likes } />
         </Col>
       </Row>
     </CardFooter>
