@@ -12,7 +12,7 @@ const Like = ({ likes, id, addLike }) => (
     <Button
       className="float-right"
       color="danger"
-      onClick={ () => addLike(id, likes) }
+      onClick={ () => addLike(id, 'add') }
     >
       Like
     </Button>
