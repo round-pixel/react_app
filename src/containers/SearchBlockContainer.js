@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import SearchBlock from 'components/layouts/containers/SearchBlock';
-import { searchFilter } from 'actions/Search';
+import { fetchPosts } from 'actions/Posts';
 
 const mapActionsToProps = (dispatch) => ({
-  search: (filter) => {
-    dispatch(searchFilter(filter));
+  search: (text) => {
+    dispatch(fetchPosts({ search: text }));
   }
 });
 
