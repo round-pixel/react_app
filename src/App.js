@@ -42,9 +42,9 @@ const App = () => (
   </Provider>
 );
 
-ReactDOM.render(
-  <DevTools store={ store } />,
-  document.getElementById('devtools')
-);
+// ReactDOM.render(
+//   <DevTools store={ store } />,
+//   document.getElementById('devtools')
+// );
 
 export default App;

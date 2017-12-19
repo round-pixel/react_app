@@ -12,13 +12,18 @@ class SeacrhBlock extends React.Component {
     this.setState({search: e.target.value});
   }
 
-  render() {
+  handleSubmit(e) {
+    e.preventDefault();
     const search = this.props.search;
+    return search(this.state.search);
+  }
+
+  render() {
     return (
-      <Form inline>
+      <Form inline onSubmit={ this.handleSubmit.bind(this) }>
         <FormGroup>
           <Input ref="search" id="search" onChange={ this.setSearch.bind(this) }/>
-          <Button onClick={ () => search(this.state.search) }>Search</Button>
+          <Button>Search</Button>
         </FormGroup>
       </Form>
     );

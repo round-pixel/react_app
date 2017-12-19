@@ -2,7 +2,6 @@ import { assign } from 'lodash/object';
 import * as types from 'constants/actionTypes/PostsActionTypes';
 import * as likeTypes from 'constants/actionTypes/AddLike';
 import update from 'immutability-helper';
-import { SEARCH_FILTER } from 'constants/actionTypes/Search';
 
 const initialState = {
   isFetching: false,
@@ -15,18 +14,7 @@ function addLike(posts, id, count) {
     const index = posts.findIndex((post) => post.id == id);
     return update(
       posts,
-      { [index]: { likes: { $apply: () => count + 1 } } }
-    );
-  }
-  return posts;
-}
-
-function filtered(posts, filter) {
-  if (posts) {
-    return posts.filter((post) =>
-      post.message
-        .toLowerCase()
-        .indexOf(filter.toLowerCase()) !== -1
+      { [index]: { likes: { $apply: () => count } } }
     );
   }
   return posts;
@@ -41,13 +29,9 @@ export default function(state = initialState, action) {
     case types.FETCH_POSTS_SUCCESS:
       return assign({}, initialState, { entries: action.response });
     case likeTypes.ADD_LIKE: {
-      const id = action.id;
-      const count = action.count;
+      const id = action.response.id;
+      const count = action.response.likes;
       return assign({}, state, { entries: addLike(state.entries, id, count) });
-    }
-    case SEARCH_FILTER: {
-      const filter = action.filter;
-      return assign({}, state, { entries: filtered(state.entries, filter) });
     }
     default:
       return state;

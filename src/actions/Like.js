@@ -1,13 +1,17 @@
 import * as likeTypes from 'constants/actionTypes/AddLike';
+import { API_CALL } from 'middleware/API';
 
-const fetchLike = (id, count) => ({
-  type: likeTypes.ADD_LIKE,
-  id,
-  count
-});
-
-export function addLike(id, count) {
-  return (dispatch) => {
-    dispatch(fetchLike(id, count));
+export function addLike(id, query) {
+  return {
+    [API_CALL]: {
+      endpoint: `/posts/${id}`,
+      method: 'POST',
+      query,
+      types: [
+        likeTypes.FETCH_LIKE_REQUEST,
+        likeTypes.ADD_LIKE,
+        likeTypes.ADD_LIKE_ERROR
+      ]
+    }
   };
 }

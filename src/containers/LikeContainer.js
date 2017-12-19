@@ -8,8 +8,8 @@ const stateToProps = (state, ownProps) => ({
 });
 
 const mapActionsToProps = (dispatch) => ({
-  addLike: (id, count) => {
-    dispatch(addLike(id, count));
+  addLike: (id, like) => {
+    dispatch(addLike(id, { like }));
   }
 });
 
