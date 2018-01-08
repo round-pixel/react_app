@@ -4,10 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>ReactApp</title>
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap@4.0.0-beta/dist/css/bootstrap.min.css">
 </head>
 <body style="margin-top: 70px;">
-  <div id="app"></div>
+  <div id="app"><%- content %></div>
   <div id="devtools"></div>
+  <script type="text/javascript">window.__INITIAL_STATE__ = <%- initialState %></script>
   <script src="/assets/bundle.js"></script>
 </body>
 </html>

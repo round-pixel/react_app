@@ -8,7 +8,10 @@ import history from 'helpers/history';
 
 import { Provider } from 'react-redux';
 
-import store from 'store';
+import createStore from 'store';
+
+// eslint-disable-next-line
+const store = createStore(window.__INITIAL_STATE__);
 
 import { BlogRoutes, createRoutes} from 'routes';
 import prepareData from 'helpers/prepareData';
@@ -42,9 +45,11 @@ const App = () => (
   </Provider>
 );
 
-// ReactDOM.render(
-//   <DevTools store={ store } />,
-//   document.getElementById('devtools')
-// );
+ReactDOM.render(
+  <DevTools store={ store } />,
+  document.getElementById('devtools'),
+  // eslint-disable-next-line
+  () => { delete window.__INITIAL_STATE__ }
+);
 
 export default App;
