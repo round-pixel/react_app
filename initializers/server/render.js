@@ -8,6 +8,7 @@ import { BlogRoutes, createRoutes } from 'routes';
 import { assign } from 'lodash';
 import { parse } from 'qs';
 import { compact } from 'lodash/array';
+import Helmet from 'react-helmet';
 
 const routes = createRoutes();
 
@@ -44,10 +45,12 @@ export default (req, res) => {
       </Provider>
     );
 
+    const head = Helmet.rewind();
+
     res.status(200);
     res.render(
       'index',
-      { initialState, content }
+      { initialState, content, head }
     );
   });
 };
