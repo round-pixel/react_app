@@ -1,19 +1,17 @@
 import React from 'react';
 
 import Helmet from 'react-helmet';
-import BlogList from 'components/blog/containers/BlogList';
+import BlogPage from 'components/blog/containers/BlogPage';
 
-const Index = ({ items }) => (
+const Index = (items) => (
   <div>
-    <BlogList {...items} />
-    <Helmet
-      title='Список постов'
-    />
+    <BlogPage {...items} />
+    <Helmet title='Список постов' />
   </div>
 );
 
 Index.propTypes = {
-  items: BlogList.propTypes.posts
+  items: BlogPage.propTypes.posts
 };
 
 export default Index;
