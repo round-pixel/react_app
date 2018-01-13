@@ -6,7 +6,7 @@ import BlogItem from './BlogItem';
 
 const BlogList = ({ posts }) => (
   <div style={ styles.blogListStyle }>
-    { posts.map((post) =>
+    { posts && posts.map((post) =>
       <BlogItem
         key={ post.id }
         id={ post.id }
