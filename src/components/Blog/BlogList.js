@@ -1,14 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import BlogItem from './BlogItem';
 
-import { Row, Col } from 'reactstrap';
-
-const Post = ({ post }) => (
-  <Row>
-    <Col lg="8">
-      { post && 
+const BlogList = ({ posts }) => (
+  <div>
+    { posts &&
+      posts.map((post) =>
         <BlogItem
           key={ post.id }
           id={ post.id }
@@ -17,15 +14,13 @@ const Post = ({ post }) => (
           metaInfo={ post.metaInfo }
           likes={ post.likes }
         />
-      }
-    </Col>
-    <Col lg="4">
-    </Col>
-  </Row>
+      )
+    }
+  </div>
 );
 
-Post.propTypes = {
-  post: PropTypes.object
+BlogList.propTypes = {
+  posts: PropTypes.array,
 };
 
-export default Post;
+export default BlogList;

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import SearchBlock from 'components/layouts/containers/SearchBlock';
+import SearchBlock from 'components/ToolBar/SearchBlock';
 import { fetchPosts } from 'actions/Posts';
 
 const mapActionsToProps = (dispatch) => ({

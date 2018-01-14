@@ -31,7 +31,7 @@ application.use(
     compiler,
     {
       hot: true,
-      publickPath: config.output.publickPath,
+      publicPath: config.output.publicPath,
       stats: { colors: true }
     }
   )

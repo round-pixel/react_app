@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import { assign } from 'lodash';
 import { parse } from 'qs';
 import { Router, matchPath } from 'react-router-dom';
@@ -15,7 +15,7 @@ const store = createStore(window.__INITIAL_STATE__);
 
 import { BlogRoutes, createRoutes} from 'routes';
 import prepareData from 'helpers/prepareData';
-import DevTools from 'containers/DevTools';
+// import DevTools from 'containers/DevTools';
 
 const routes = createRoutes();
 function historyCb(location) {
@@ -45,11 +45,11 @@ const App = () => (
   </Provider>
 );
 
-ReactDOM.render(
-  <DevTools store={ store } />,
-  document.getElementById('devtools'),
-  // eslint-disable-next-line
-  () => { delete window.__INITIAL_STATE__ }
-);
+// ReactDOM.render(
+//   <DevTools store={ store } />,
+//   document.getElementById('devtools'),
+//   // eslint-disable-next-line
+//   () => { delete window.__INITIAL_STATE__ }
+// );
 
 export default App;

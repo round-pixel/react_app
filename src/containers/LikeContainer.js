@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Like from 'components/blog/elements/Like';
+import Like from 'components/Blog/Card/Like';
 import { addLike } from 'actions/Like';
 
 const stateToProps = (state, ownProps) => ({
