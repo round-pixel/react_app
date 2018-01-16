@@ -2,13 +2,14 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import About from 'components/Layouts/AboutPage';
+import Contact from 'components/Layouts/Contact';
 import MainLayout from 'components/Layouts/MainLayout';
 import PostsContainer from 'containers/PostsContainer';
 import PostContainer from 'containers/PostContainer';
 
 import { fetchPosts } from 'actions/Posts';
 import { fetchPost } from 'actions/Post';
-import { rootPath, postsPath, aboutPath, } from 'helpers/routes';
+import { rootPath, postsPath, aboutPath, contactPath } from 'helpers/routes';
 import initialLoad from 'helpers/initialLoad';
 
 const routes = [
@@ -32,6 +33,10 @@ const routes = [
   {
     path: aboutPath(),
     component: About
+  },
+  {
+    path: contactPath(),
+    component: Contact
   },
 ];
 
