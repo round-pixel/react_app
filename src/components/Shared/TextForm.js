@@ -8,24 +8,32 @@ class Text extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { error: false };
+    this.state = {
+      errorText: false,
+      value: this.props.value,
+    };
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ error: nextProps.error });
-    // console.log(nextProps);
+    this.setState({
+      errorText: nextProps.errorText,
+      value: nextProps.value,
+    });
   }
 
   render() {
-    const { classes, label, name, onChange, error } = this.props;
+    const { classes, label, name, onChange } = this.props;
+    const { errorText, value } = this.state;
     return (
       <TextField
+        className={classes.textField}
         label={label}
-        error={error}
+        error={errorText ? true : false}
+        helperText={errorText}
         name={name}
         id={name}
+        value={ value }
         onChange={onChange}
-        className={classes.textField}
       />
     );
   }
@@ -36,7 +44,8 @@ Text.propTypes = {
   label: PropTypes.string,
   name: PropTypes.string,
   onChange: PropTypes.func,
-  error: PropTypes.bool,
+  value: PropTypes.string,
+  errorText: PropTypes.bool,
 };
 
 export default withStyles(styles)(Text);

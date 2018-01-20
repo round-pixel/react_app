@@ -5,7 +5,7 @@ import { CardActions } from 'material-ui/Card';
 import LikeContainer from 'containers/LikeContainer';
 import Button from 'material-ui/Button';
 import styles from './styles';
-import { postsPath } from 'helpers/routes';
+import { postsPath, editPostPath } from 'helpers/routes';
 import Link from 'components/Shared/Link';
 
 function Footer(props) {
@@ -14,8 +14,13 @@ function Footer(props) {
   return (
     <CardActions disableActionSpacing>
       <Link to={ postsPath(id) } >
-        <Button dense color="primary">
+        <Button color="primary">
           Read more
+        </Button>
+      </Link>
+      <Link to={ editPostPath(id) } >
+        <Button color="primary">
+          Edit
         </Button>
       </Link>
       <div className={classes.flexGrow} />
@@ -26,6 +31,7 @@ function Footer(props) {
 
 Footer.propTypes = {
   classes: PropTypes.object.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 export default withStyles(styles)(Footer);
