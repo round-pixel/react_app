@@ -6,25 +6,8 @@ import Typography from 'material-ui/Typography';
 import styles from './styles';
 import Grid from 'material-ui/Grid';
 import TextForm from 'components/Shared/TextForm';
-import { Field, reduxForm } from 'redux-form';
+import { Field } from 'redux-form';
 import Button from 'material-ui/Button';
-import { connect } from 'react-redux';
-
-const validate = values => {
-  const errors = {};
-  const requiredFields = [
-    'title',
-    'author',
-  ];
-
-  requiredFields.forEach(field => {
-    if (!values[field]) {
-      errors[field] = 'Required';
-    }
-  });
-
-  return errors;
-};
 
 const renderTextField = ({
   label,
@@ -97,6 +80,8 @@ EditPost.propTypes = {
   handleSubmit: PropTypes.func,
   initialValues: PropTypes.object,
   reset: PropTypes.func,
+  pristine: PropTypes.bool,
+  submiting: PropTypes.bool,
 };
 
 renderTextField.propTypes = {
@@ -105,17 +90,4 @@ renderTextField.propTypes = {
   meta:  PropTypes.object,
 };
 
-export default connect(
-  (state) => ({
-    initialValues: {
-      title: state.post.entry && state.post.entry.message,
-      author: state.post.entry && state.post.entry.metaInfo.createdBy,
-      createdAt: state.post.entry && state.post.entry.metaInfo.createdAt,
-    }
-  })
-)(reduxForm({
-  form: 'editPost',
-  enableReinitialize: true,
-  validate,
-  onSubmit: (values) => alert(JSON.stringify(values))
-})(withStyles(styles)(EditPost)));
+export default withStyles(styles)(EditPost);

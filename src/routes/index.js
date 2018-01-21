@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import About from 'components/Layouts/AboutPage';
-import Edit from 'components/views/Edit';
+import EditPost from 'containers/EditPostContainer';
 import Contact from 'components/Layouts/Contact';
 import MainLayout from 'components/Layouts/MainLayout';
 import PostsContainer from 'containers/PostsContainer';
@@ -11,7 +11,7 @@ import PostContainer from 'containers/PostContainer';
 import { fetchPosts } from 'actions/Posts';
 import { fetchPost } from 'actions/Post';
 import { rootPath, postsPath, aboutPath, contactPath, editPostPath } from 'helpers/routes';
-import initialLoad from 'helpers/initialLoad';
+// import initialLoad from 'helpers/initialLoad';
 
 const routes = [
   {
@@ -38,7 +38,7 @@ const routes = [
       // if (initialLoad()) return;
       return store.dispatch(fetchPost(params.id));
     },
-    component: Edit
+    component: EditPost
   },
   {
     path: aboutPath(),

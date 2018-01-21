@@ -29,7 +29,10 @@ function Header(props) {
           { message }
         </Typography>
       }
-      subheader={metaInfo.createdAt && `Posted: ${dateToString(metaInfo.createdAt)}` }
+      subheader={
+        (metaInfo.createdAt && `Posted: ${dateToString(metaInfo.createdAt)}. `) +
+        (metaInfo.updatedAt && `Updated: ${dateToString(metaInfo.updatedAt)}`)
+      }
     />
   );
 }

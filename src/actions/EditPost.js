@@ -1,16 +1,16 @@
-import * as types from 'constants/actionTypes/PostActionTypes';
+import * as types from 'constants/actionTypes/UpdatePost';
 import { API_CALL } from 'middleware/API';
 
-export function updatePost(id, values) {
+export function updatePost(values) {
   return {
     [API_CALL]: {
-      endpoint: `/posts/${id}/edit`,
+      endpoint: `/posts/${values.id}`,
       method: 'PUT',
-      query: {values},
+      query:{values},
       types: [
-        types.FETCH_POST_REQUEST,
-        types.FETCH_POST_SUCCESS,
-        types.FETCH_POST_ERROR
+        types.UPDATE_POST_REQUEST,
+        types.UPDATE_POST_SUCCESS,
+        types.UPDATE_POST_ERROR
       ]
     }
   };
