@@ -8,6 +8,7 @@ import Contact from 'components/Layouts/Contact';
 import MainLayout from 'components/Layouts/MainLayout';
 import PostsContainer from 'containers/PostsContainer';
 import PostContainer from 'containers/PostContainer';
+import NotFound from 'components/Layouts/NotFound';
 
 import { fetchPosts } from 'actions/Posts';
 import { fetchPost } from 'actions/Post';
@@ -60,6 +61,7 @@ export const BlogRoutes = () => (
   <MainLayout>
     <Switch>
       { routes.map((route, i) => <Route key={i} {...route} />) }
+      <Route path="*" component={NotFound} />
     </Switch>
   </MainLayout>
 );
