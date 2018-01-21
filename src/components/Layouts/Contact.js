@@ -33,6 +33,7 @@ class Contact extends Component {
   onSubmit(e) {
     e.preventDefault();
     alert(JSON.stringify(this.state.form.values));
+    this.props.history.push('/');
   }
 
   clearError(fieldName) {
@@ -120,6 +121,7 @@ class Contact extends Component {
 
 Contact.propTypes = {
   classes: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(Contact);

@@ -32,5 +32,8 @@ export default connect(mapStateToProps)(reduxForm({
   form: 'editPost',
   enableReinitialize: true,
   validate,
-  onSubmit: (values, dispatch) => dispatch(updatePost(values))
+  onSubmit: (values, dispatch, props) => {
+    dispatch(updatePost(values));
+    props.history.push(`/posts/${props.initialValues.id}`);
+  }
 })(EditPost));

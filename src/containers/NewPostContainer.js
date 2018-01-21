@@ -30,5 +30,8 @@ export default connect(mapStateToProps)(reduxForm({
   form: 'newPost',
   enableReinitialize: true,
   validate,
-  onSubmit: (values, dispatch) => dispatch(newPost(values))
+  onSubmit: (values, dispatch, props) => {
+    dispatch(newPost(values));
+    props.history.push('/');
+  }
 })(NewPost));
