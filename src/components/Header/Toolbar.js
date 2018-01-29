@@ -22,6 +22,9 @@ function ToolBar(props) {
       <Link to="/about" className={classes.link}>
         <Button color="inherit" className={classes.button}>About</Button>
       </Link>
+      <Link to="/new" className={classes.link}>
+        <Button raised color="inherit" className={classes.button}>New post</Button>
+      </Link>
     </Toolbar>
   );
 }
