@@ -12,9 +12,10 @@ module.exports = {
     "plugin:import/warnings"
   ],
   "parserOptions": {
-    "ecmaVersion": 6,
+    "ecmaVersion": 2017,
     "sourceType": "module",
     "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
       "jsx": true
     }
   },
@@ -58,7 +59,7 @@ module.exports = {
     "no-var": 1,
     "object-shorthand": 1,
     "padded-blocks": ["warn", "never"],
-    "prefer-const": 1,
+    "prefer-const": 0,
     "prefer-template": 1,
     "quote-props": ["warn", "as-needed"],
     "space-before-blocks": 1,

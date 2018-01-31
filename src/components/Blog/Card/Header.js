@@ -37,6 +37,15 @@ function Header(props) {
   );
 }
 
+Header.defaultProps = {
+  message: '',
+  metaInfo: {
+    createdBy: '',
+    updatedAt: '',
+    createdAt: '',
+  }
+};
+
 Header.propTypes = {
   classes: PropTypes.object.isRequired,
   metaInfo: PropTypes.object,
