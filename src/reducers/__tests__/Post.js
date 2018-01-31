@@ -39,4 +39,20 @@ describe('post reducer', () => {
       }
     );
   });
+
+  it('should return post', () => {
+    let post = { message: 'Hello world' };
+    expect(
+      reducer([], {
+        type: types.FETCH_POST_SUCCESS,
+        response: post
+      })
+    ).toEqual(
+      {
+        isFetching: false,
+        error: false,
+        entry: post
+      }
+    );
+  });
 });
