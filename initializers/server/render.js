@@ -9,6 +9,7 @@ import { assign } from 'lodash';
 import { parse } from 'qs';
 import { compact } from 'lodash/array';
 import Helmet from 'react-helmet';
+import webpackAsset from './webpackAsset';
 
 const routes = createRoutes();
 
@@ -50,7 +51,7 @@ export default (req, res) => {
     res.status(200);
     res.render(
       'index',
-      { initialState, content, head }
+      { initialState, content, head, webpackAsset }
     );
   });
 };
