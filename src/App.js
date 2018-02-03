@@ -44,13 +44,11 @@ const App = () => (
   </Provider>
 );
 
-// eslint-disable-next-line
 if (__DEVELOPMENT__) {
   ReactDOM.render(
     <DevTools store={ store } />,
     document.getElementById('devtools'),
-    // eslint-disable-next-line
-    () => { delete window.__INITIAL_STATE__ }
+    () => { delete window.__INITIAL_STATE__ ;}
   );
 }
 

@@ -9,7 +9,6 @@ const findAssetInManifest = (manifest, asset, extension) => (
     : manifest[asset]
 );
 
-// eslint-disable-next-line
 if (__DEVELOPMENT__) {
   assetPath = (asset, extension) => (
     `assets/${asset}.${extension}`

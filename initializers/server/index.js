@@ -12,9 +12,10 @@ require.extensions['.css'] = () => {
 const port = 3001;
 
 const express = require('express');
-
+const morgan = require('morgan');
 const application = express();
 
+application.use(morgan('combined'));
 application.use(express.static('src/static'));
 application.set('views', __dirname);
 application.set('view engine', 'ejs');
