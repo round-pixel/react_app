@@ -28,6 +28,7 @@ class Like extends Component {
           <FavoriteIcon
             onClick={ () => this.fetchLike(id, 'remove') }
             style={{color: 'red'}}
+            className="addLike"
           />
         </IconButton>
       );
@@ -36,6 +37,7 @@ class Like extends Component {
         <IconButton aria-label="Add to favorites">
           <FavoriteIconBorder
             onClick={ () => this.fetchLike(id, 'add') }
+            className="addLike"
           />
         </IconButton>
       );
@@ -43,7 +45,7 @@ class Like extends Component {
 
     return (
       <div>
-        <div className={classes.likeCount}>
+        <div className={`${classes.likeCount} likeCount`}>
           {likes}
         </div>
         {icon}

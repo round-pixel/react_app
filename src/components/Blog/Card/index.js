@@ -42,6 +42,14 @@ class MyCard extends React.Component {
   }
 }
 
+MyCard.defaultProps = {
+  id: 0,
+  image: {
+    src: '/images/river.jpg',
+  },
+  metaInfo: {},
+};
+
 MyCard.propTypes = {
   classes: PropTypes.object.isRequired,
   metaInfo: PropTypes.object,

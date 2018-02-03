@@ -6,6 +6,7 @@ import Typography from 'material-ui/Typography';
 import styles from './styles';
 
 function Body(props) {
+  // eslint-disable-next-line
   const { classes } = props;
 
   return (

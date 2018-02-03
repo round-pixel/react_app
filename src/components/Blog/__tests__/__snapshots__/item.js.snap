@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Item render should render usual item 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <WithStyles(MyCard)
+    props={
+      Object {
+        "id": 5,
+        "image": Object {},
+        "message": "Hello World",
+        "metaInfo": Object {
+          "createdBy": "Bob",
+        },
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "classes": Object {
+        "avatar": "MyCard-avatar-5",
+        "card": "MyCard-card-1",
+        "expand": "MyCard-expand-3",
+        "expandOpen": "MyCard-expandOpen-4",
+        "flexGrow": "MyCard-flexGrow-6",
+        "likeCount": "MyCard-likeCount-7",
+        "media": "MyCard-media-2",
+      },
+      "id": 0,
+      "image": Object {
+        "src": "/images/river.jpg",
+      },
+      "metaInfo": Object {},
+      "props": Object {
+        "id": 5,
+        "image": Object {},
+        "message": "Hello World",
+        "metaInfo": Object {
+          "createdBy": "Bob",
+        },
+      },
+    },
+    "ref": null,
+    "rendered": null,
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "classes": Object {
+          "avatar": "MyCard-avatar-5",
+          "card": "MyCard-card-1",
+          "expand": "MyCard-expand-3",
+          "expandOpen": "MyCard-expandOpen-4",
+          "flexGrow": "MyCard-flexGrow-6",
+          "likeCount": "MyCard-likeCount-7",
+          "media": "MyCard-media-2",
+        },
+        "id": 0,
+        "image": Object {
+          "src": "/images/river.jpg",
+        },
+        "metaInfo": Object {},
+        "props": Object {
+          "id": 5,
+          "image": Object {},
+          "message": "Hello World",
+          "metaInfo": Object {
+            "createdBy": "Bob",
+          },
+        },
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
