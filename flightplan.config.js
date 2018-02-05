@@ -19,7 +19,7 @@ plan.remote(function(remote) {
   remote.exec('nvm use default');
   remote.log('Move folder to web root');
   remote.exec('cp -R /tmp/' + tmpDir + ' ~/');
-  remote.rm('rm -r /tmp/' + tmpDir);
+  remote.exec('rm -r /tmp/' + tmpDir);
 
   remote.log('Install dependencies');
   remote.exec('npm --prefix ~/' + tmpDir + 'install ~/' + tmpDir);
