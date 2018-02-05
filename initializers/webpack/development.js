@@ -1,4 +1,3 @@
-/* eslint-disable */
 import path from 'path';
 
 import webpack from 'webpack';
@@ -28,8 +27,8 @@ export default {
       {
         test: /\.css$/,
         use: [
-          { loader: "style-loader/url" },
-          { loader: "css-loader" }
+          { loader: 'style-loader/url' },
+          { loader: 'css-loader' }
         ]
       }
     ]

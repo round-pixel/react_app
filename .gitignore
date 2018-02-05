@@ -1,2 +1,5 @@
 node_modules
 dist
+src/static/assets/*
+!src/static/assets/report.html
+log

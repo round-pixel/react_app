@@ -14,14 +14,14 @@ import { fetchPosts } from 'actions/Posts';
 import { fetchPost } from 'actions/Post';
 import { rootPath, postsPath, aboutPath,
   contactPath, editPostPath, newPostPath } from 'helpers/routes';
-// import initialLoad from 'helpers/initialLoad';
+import initialLoad from 'helpers/initialLoad';
 
 const routes = [
   {
     path: rootPath(),
     exact: true,
     prepareData: (store) => {
-      // if (initialLoad()) return;
+      if (initialLoad()) return;
       return store.dispatch(fetchPosts());
     },
     component: PostsContainer
@@ -30,7 +30,7 @@ const routes = [
     path: postsPath(),
     exact: true,
     prepareData: (store, query, params) => {
-      // if (initialLoad()) return;
+      if (initialLoad()) return;
       return store.dispatch(fetchPost(params.id));
     },
     component: PostContainer
@@ -38,7 +38,7 @@ const routes = [
   {
     path: editPostPath(),
     prepareData: (store, query, params) => {
-      // if (initialLoad()) return;
+      if (initialLoad()) return;
       return store.dispatch(fetchPost(params.id));
     },
     component: EditPost
