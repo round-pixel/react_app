@@ -1,6 +1,6 @@
 /* eslint-disable */
 var plan = require('flightplan');
-var tmpDir = 'blog-clien-' + new Date().getTime();
+var tmpDir = 'blog-client-' + new Date().getTime();
 var user = 'react';
 
 plan.target('production', {
